@@ -10,13 +10,13 @@ export default function LoginView() {
       <View style={styles.viewInput}><TextInput style={styles.input} placeholder='password...' /></View>
       <View style={styles.signInButton}><Button title='sign in'/></View>
     </View>
-  );''
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#40bcff',
+    backgroundColor: '#28BFBD',
     alignItems: 'center',
     justifyContent: 'center',
   },
