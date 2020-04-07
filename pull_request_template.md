@@ -20,7 +20,6 @@
 
 ## Added to documentation?
 
-- [ ] docs.dev.to
 - [ ] readme
 - [ ] no documentation needed
 
