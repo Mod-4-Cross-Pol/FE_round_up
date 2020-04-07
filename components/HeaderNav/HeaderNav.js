@@ -16,7 +16,7 @@ export default function HeaderNav() {
 const styles = StyleSheet.create({
   nav: {
     width: '100%',
-    height: 300,
+    height: 140,
     backgroundColor: '#9cffad'
   },
   navText: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginTop: 70
   },
   navButtonContainer: {
-    marginTop: 180
+    marginTop: 25
   },
   navButton: {
 

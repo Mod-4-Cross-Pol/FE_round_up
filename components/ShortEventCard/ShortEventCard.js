@@ -4,9 +4,6 @@ import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
 export default function ShortEventCard() {
   return (
     <View>
-      <Image
-        source={require('../../assets/fake_map.png')}
-        style={{width: 325, height: 300, marginBottom: 20, position: 'relative', top: 30}}/>
       <ScrollView style={styles.scrollView}>
         <View style={styles.smallCardContainer}>
           <Text style={styles.titleText}>Volleyball</Text>
@@ -48,7 +45,8 @@ const styles = StyleSheet.create({
     width: 'auto',
     position: 'relative',
     marginBottom: 50,
-    top: 40
+    top: 40,
+    height: 300
   },
   smallCardContainer: {
     height: 100,
