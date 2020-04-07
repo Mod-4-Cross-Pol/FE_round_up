@@ -4,6 +4,7 @@ import * as React from 'react';
 // import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import LoginView from './components/LoginView/LoginView';
+import Map from './components/Map/Map';
 import HeaderNav from './components/HeaderNav/HeaderNav';
 import ShortEventCard from './components/ShortEventCard/ShortEventCard';
 import FullEventCard from './components/FullEventCard/FullEventCard';
@@ -28,6 +29,7 @@ export default function App() {
 
 //   DASHBOARD SCREEN
 //   <HeaderNav />
+//   <Map />
 //   <ShortEventCard />
 
 //   CREATE NEW EVENT SCREEN
