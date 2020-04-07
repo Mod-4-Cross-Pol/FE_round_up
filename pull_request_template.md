@@ -5,6 +5,7 @@
 - [ ] Bug Fix
 - [ ] Optimization
 - [ ] Documentation Update
+- [ ] Add File(s)
 
 ## What does this PR do?
 
@@ -20,7 +21,6 @@
 
 ## Added to documentation?
 
-- [ ] docs.dev.to
 - [ ] readme
 - [ ] no documentation needed
 
