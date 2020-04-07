@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
-// export default function LoginView() {
-//   return (
-//     <View style={styles.map}>
-//     </View>
-//   );
-// }
+export default function Map() {
 
-export default class App extends Component<Props> {
-  render() {
     return (
     <MapView
+    showsUserLocation={true}
     style={{height: 350}}
     region={{
       latitude: 39.781511,
@@ -21,10 +15,16 @@ export default class App extends Component<Props> {
       latitudeDelta: 0.05,
       longitudeDelta: 0.05
     }}
-    showsUserLocation={true}
+    >
+    <MapView.Marker
+      coordinate={{latitude: 39.777,
+      longitude: -104.777}}
+      title={"Marker title"}
+      description={"Marker description"}
     />
+    </MapView>
     );
-  }}
+  }
 
 const styles = StyleSheet.create({
   map: {
