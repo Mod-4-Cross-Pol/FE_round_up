@@ -85,7 +85,7 @@ let events = [
     return (
     <MapView
     showsUserLocation={true}
-    style={{height: 350}}
+    style={styles.map}
     region={{
       latitude: 39.781511,
       longitude: -104.798673,
@@ -108,6 +108,8 @@ let events = [
 
 const styles = StyleSheet.create({
   map: {
-
+    height: 350,
+    width: 350,
+    marginTop: 30
   }
 });

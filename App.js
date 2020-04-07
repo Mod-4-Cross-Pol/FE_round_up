@@ -16,8 +16,11 @@ export default function App() {
     <NavigationContainer>
       <View style={styles.container}>
 
-        <HeaderNav />
-        <ShortEventCard />
+    <HeaderNav />
+    <Map />
+    <ShortEventCard />
+
+
 
       </View>
     </NavigationContainer>
@@ -43,6 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#28BFBD',
     alignItems: 'center',
-    justifyContent: 'center'
+    // justifyContent: 'center'
   }
 });
