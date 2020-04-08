@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-
+import { NavigationContainer } from '@react-navigation/native';
+import CreateEventForm from '../CreateEventForm/CreateEventForm';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
-export default function Map() {
+export default function Map({ navigation }) {
 
 let events = [
     {
@@ -95,6 +96,7 @@ let events = [
       >
       {events.map(event => {
         return <MapView.Marker
+          onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
           coordinate=
             {{latitude: event.lat,
             longitude: event.long}}
