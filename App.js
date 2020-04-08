@@ -4,9 +4,6 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginView from './components/LoginView/LoginView';
-import Map from './components/Map/Map';
-import HeaderNav from './components/HeaderNav/HeaderNav';
-import ShortEventCard from './components/ShortEventCard/ShortEventCard';
 import FullEventCard from './components/FullEventCard/FullEventCard';
 import CreateEventForm from './components/CreateEventForm/CreateEventForm';
 import Dashboard from './containers/Dashboard/Dashboard'
@@ -21,24 +18,11 @@ export default function App() {
         <Stack.Screen name='Login' component={LoginView} />
         <Stack.Screen name='Dashboard' component={Dashboard} />
         <Stack.Screen name='CreateEventForm' component={CreateEventForm} />
+        <Stack.Screen name='FullEventCard' component={FullEventCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-//   INTRO SCREEN
-//   <LoginView />
-
-//   DASHBOARD SCREEN
-//   <HeaderNav />
-//   <Map />
-//   <ShortEventCard />
-
-//   CREATE NEW EVENT SCREEN
-//   <CreateEventForm />
-
-//   VIEW FULL EVENT SCREEN
-//   <FullEventCard />
 
 const styles = StyleSheet.create({
   container: {
