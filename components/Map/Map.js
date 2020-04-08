@@ -83,33 +83,34 @@ let events = [
     },
   ]
     return (
-    <MapView
-    showsUserLocation={true}
-    style={styles.map}
-    region={{
-      latitude: 39.781511,
-      longitude: -104.798673,
-      latitudeDelta: 0.05,
-      longitudeDelta: 0.05
-    }}
-    >
-    {events.map(event => {
-      return <MapView.Marker 
-        coordinate=
-          {{latitude: event.lat,
-          longitude: event.long}}
-        title={event.activity}
-        description={event.notes}
-      />
-    })}
-    </MapView>
+      <MapView
+      showsUserLocation={true}
+      style={styles.map}
+      region={{
+        latitude: 39.781511,
+        longitude: -104.798673,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05
+      }}
+      >
+      {events.map(event => {
+        return <MapView.Marker
+          coordinate=
+            {{latitude: event.lat,
+            longitude: event.long}}
+          title={event.activity}
+          description={event.notes}
+        />
+      })}
+      </MapView>
     );
   }
 
 const styles = StyleSheet.create({
   map: {
     height: 350,
-    width: 350,
-    marginTop: 30
+    width: 'auto',
+    borderWidth: 5,
+    borderColor: '#292c33'
   }
 });
