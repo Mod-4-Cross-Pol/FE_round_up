@@ -1,5 +1,9 @@
-import React from 'react';
+// import React from 'react';
+import * as React from 'react';
 import { StyleSheet, View, Button, Text, ScrollView, CheckBox, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 export default function FullEventCard() {
   return (
