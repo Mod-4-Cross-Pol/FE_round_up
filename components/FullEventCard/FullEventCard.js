@@ -1,24 +1,23 @@
 // import React from 'react';
 import * as React from 'react';
 import { StyleSheet, View, Button, Text, ScrollView, CheckBox, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-
-export default function FullEventCard() {
+export default function FullEventCard({ route }) {
+  const { event } = route.params
   return (
     <View style={styles.container}>
       <View style={styles.closeButton}><Button title='X'/></View>
-      <Text style={styles.titleText}>Volleyball</Text>
-      <Text style={styles.text}>Location: Wash Park</Text>
-      <Text style={styles.text}>Start Time: 2:00PM</Text>
-      <Text style={styles.text}>End Time: 4:00PM</Text>
-      <Text style={styles.text}>Players Attending: 4</Text>
-      <Text style={styles.text}>Max Players: 8</Text>
-      <Text style={styles.text}>Skill Level: friendly game!</Text>
+      <Text style={styles.titleText}>{event.activity}</Text>
+      <Text style={styles.text}>Location: {event.location}</Text>
+      <Text style={styles.text}>Start Time: {event.time}</Text>
+      <Text style={styles.text}>End Time: NEED TO GET THIS ADJUSTED</Text>
+      <Text style={styles.text}>Players Attending: {event.players_going}</Text>
+      <Text style={styles.text}>Max Players: {event.max_players}</Text>
+      <Text style={styles.text}>Skill Level: {event.skill_level}</Text>
       <Text style={styles.text}>Equipment:</Text>
-        <Text style={styles.text}>net</Text>
-        <Text style={styles.text}>volleyball</Text>
+      {event.equipment.map(e => {
+        return <Text style={styles.text}>{e.name}</Text>
+      })}
       <Button title='count me in!'/>
     </View>
   );

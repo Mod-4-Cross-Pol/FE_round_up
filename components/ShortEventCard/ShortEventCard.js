@@ -1,13 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
 
-export default function ShortEventCard(props) {
+export default function ShortEventCard({activity, location, time, event, navigation}) {
   return (
-    <View key={Math.random()} style={styles.smallCardContainer}>
-      <Text style={styles.titleText}>{props.activity}</Text>
-      <Text style={styles.text}>{props.location}</Text>
-      <Text style={styles.text}>Time: {props.time}</Text>
-    </View>
+    <TouchableOpacity key={Math.random()} style={styles.smallCardContainer}
+    onPress={() => {navigation.navigate('FullEventCard', {event: event})}}>
+      <Text style={styles.titleText}>{activity}</Text>
+      <Text style={styles.text}>{location}</Text>
+      <Text style={styles.text}>Time: {time}</Text>
+    </TouchableOpacity>
   );
 }
 

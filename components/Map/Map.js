@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
-export default function Map() {
+export default function Map({ navigation }) {
 
 let events = [
     {
@@ -87,19 +86,20 @@ let events = [
       showsUserLocation={true}
       style={styles.map}
       region={{
-        latitude: 39.781511,
-        longitude: -104.798673,
-        latitudeDelta: 0.05,
-        longitudeDelta: 0.05
+        latitude: 39.7306645,
+        longitude: -104.988245,
+        latitudeDelta: 0.07,
+        longitudeDelta: 0.07
       }}
       >
       {events.map(event => {
         return <MapView.Marker
-          coordinate=
-            {{latitude: event.lat,
-            longitude: event.long}}
+        coordinate=
+        {{latitude: event.lat,
+          longitude: event.long}}
           title={event.activity}
           description={event.notes}
+        onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
         />
       })}
       </MapView>
