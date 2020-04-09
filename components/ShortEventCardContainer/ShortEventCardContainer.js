@@ -3,7 +3,10 @@ import ShortEventCard from '../ShortEventCard/ShortEventCard';
 import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
 
 export default function ShortEventCardContainer({ navigation, events }) {
-
+  console.log(events)
+  if (!events.length) {
+    return <Text>Looks like there's no events planned for today!</Text>
+  }
   let eventCards = events.map(event => <ShortEventCard
     activity={event.activity}
     location={event.location}
