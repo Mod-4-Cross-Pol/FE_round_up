@@ -8,8 +8,8 @@ export default function HeaderNav({ navigation }) {
   return (
     <View style={styles.nav}>
       <View style={styles.navButtonContainer}>
-        <View style={styles.navButton}><Button title='CHANGE DATE'/></View>
-        <View style={styles.navButton}><Button onPress={() => navigation.navigate('CreateEventForm')}  title='CREATE EVENT'/></View>
+        <View style={styles.navButton}><Button onPress={() => navigation.navigate('DatePicker')} title='CHANGE DATE'/></View>
+        <View style={styles.navButton}><Button onPress={() => navigation.navigate('CreateEventForm')} title='CREATE EVENT'/></View>
         <View style={styles.navButton}><Button onPress={() => navigation.navigate('Login')} title='LOG OUT'/></View>
       </View>
     </View>
