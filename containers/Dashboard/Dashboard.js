@@ -7,6 +7,7 @@ import ShortEventCardContainer from '../../components/ShortEventCardContainer/Sh
 import { StyleSheet, View, Text } from 'react-native';
 
 export default function Dashboard({ navigation }) {
+
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
 
@@ -112,7 +113,6 @@ export default function Dashboard({ navigation }) {
       ]
     }
   ]
-  
 
   useEffect(() => {
     setEvents(mockEvents)
