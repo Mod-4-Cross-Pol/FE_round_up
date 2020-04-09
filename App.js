@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginView from './components/LoginView/LoginView';
 import FullEventCard from './components/FullEventCard/FullEventCard';
 import CreateEventForm from './components/CreateEventForm/CreateEventForm';
+import DatePicker from './components/DatePicker/DatePicker';
 import Dashboard from './containers/Dashboard/Dashboard'
 import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name='Dashboard' component={Dashboard} />
         <Stack.Screen name='CreateEventForm' component={CreateEventForm} />
         <Stack.Screen name='FullEventCard' component={FullEventCard} />
+        <Stack.Screen name='DatePicker' component={DatePicker} />
       </Stack.Navigator>
     </NavigationContainer>
   );
