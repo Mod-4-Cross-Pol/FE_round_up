@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderNav from '../../components/HeaderNav/HeaderNav';
 import Map from '../../components/Map/Map';
 import FilterByDate from '../../components/FilterByDate/FilterByDate';
@@ -7,6 +7,9 @@ import ShortEventCardContainer from '../../components/ShortEventCardContainer/Sh
 import { StyleSheet, View, Text } from 'react-native';
 
 export default function Dashboard({ navigation }) {
+  const [ events, setEvents ] = useState([])
+  const [ filterValue, setFilterValue ] = useState('')
+
   let mockEvents = [
     {
       id: 1,
@@ -109,14 +112,36 @@ export default function Dashboard({ navigation }) {
       ]
     }
   ]
+  
+
+  useEffect(() => {
+    setEvents(mockEvents)
+  }, [])
+
+  const setFilter = (value) => {
+    console.log('inside setFilter func', value)
+    return setFilterValue(value)
+  }
+
+  const filterEvents = (value) => {
+    if (value === '' || value === 'Show all events') {
+      return events
+    }
+    let filteredEvents = events.filter(event => {
+      return event.activity === value
+    })
+    return filteredEvents
+  }
+
   return (
     <View>
       <HeaderNav navigation={navigation}/>
-      <Map navigation={navigation} events={mockEvents}/>
+      <Map navigation={navigation} events={filterEvents(filterValue)}/>
       <Text>Filter events:</Text>
-      <FilterByDate />
-      <FilterByActivity events={mockEvents}/>
-      <ShortEventCardContainer navigation={navigation} events={mockEvents}/>
+      {/* <FilterByDate /> */}
+      <FilterByActivity events={filterEvents(filterValue)} setFilter={setFilter}/>
+      <ShortEventCardContainer navigation={navigation} events={filterEvents(filterValue)}/>
     </View>
   );
+
 }

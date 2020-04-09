@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 
-export default function FilterByActivity() {
+export default function FilterByActivity(props) {
 
   const [ activityFilterValue, setActivityFilterValue ] = useState('')
 
+  const setFilterValue = (value) => {
+    //  setActivityFilterValue(value)
+    props.setFilter(value)
+  }
   return (
     <View style={styles.dropdownContainer}>
     <ModalDropdown
+      renderButtonText={activityFilterValue => setFilterValue(activityFilterValue)}
       textStyle={styles.dropdownText}
       dropdownTextStyle={styles.dropdownTextStyle}
       defaultValue='By activity -'
-      options={[ 'Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball', 'Miscellaneous']}
-      onChange={activityFilterValue => setActivityFilterValue(activityFilterValue)}
+      options={[ 'Show all events', 'Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball', 'Miscellaneous']}
     />
   </View>
   );
