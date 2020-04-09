@@ -105,12 +105,14 @@ let mockEvents = [
     }
   ]
 
-export default function ShortEventCardContainer() {
+export default function ShortEventCardContainer({ navigation }) {
 
   let eventCards = mockEvents.map(event => <ShortEventCard
     activity={event.activity}
     location={event.location}
-    time={event.time}/>)
+    time={event.time}
+    event={event}
+    navigation={navigation}/>)
 
   return (
     <ScrollView style={styles.scrollView}>
