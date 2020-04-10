@@ -8,7 +8,7 @@ export default function ShortEventCardContainer({ navigation, events }) {
       <View style={styles.noEventsMessageContainer}>
         <View style={styles.textBox}>
           <Text style={styles.noEventsMessage}>Bummer!</Text>
-          <Text style={styles.noEventsMessage}>Looks there's no events for that activity planned today.</Text>
+          <Text style={styles.noEventsMessage}>Looks like there are no events for that activity planned today.</Text>
         </View>
       </View>
     )
@@ -31,14 +31,15 @@ const styles = StyleSheet.create({
   scrollView: {
     width: 'auto',
     height: '100%',
-    backgroundColor: '#292c33',
+    backgroundColor: '#0060b4',
     paddingTop: 20,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+
   },
   noEventsMessageContainer: {
     height: '100%',
-    backgroundColor: '#292c33',
+    backgroundColor: '#0060b4',
     alignItems: 'center'
   },
   textBox: {

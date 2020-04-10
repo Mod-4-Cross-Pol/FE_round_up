@@ -20,17 +20,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#28BFBD',
     borderRadius: 50,
     alignItems: 'center',
-    borderWidth: 3,
-    borderColor: '#3b4aff'
+    borderWidth: 6,
+    borderColor: '#dee500'
   },
   titleText: {
     fontFamily: 'Farah',
-    fontSize: 30,
+    fontSize: 25,
+    fontWeight: 'bold',
     color: '#000',
     marginTop: 7
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#000'
   }
 });

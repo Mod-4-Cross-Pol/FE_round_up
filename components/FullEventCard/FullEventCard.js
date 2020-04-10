@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
 
 export default function FullEventCard({ route }) {
   const { event } = route.params
+
+  const onCountMeInButtonPress = () => {
+    Alert.alert('Welcome to the Party! 🤙')
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{event.activity}</Text>
@@ -47,7 +52,7 @@ export default function FullEventCard({ route }) {
         </View>
       </View>
 
-      <View style={styles.countMeInButton}><Button title='Count Me In!'/></View>
+      <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>
       <Text style={styles.signedUpMessage}>You Are Not Currently</Text>
       <Text style={styles.signedUpMessage}>Signed Up For This Event</Text>
     </View>
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
   container: {
     width: 'auto',
     height: '100%',
-    backgroundColor: '#3b4aff',
+    backgroundColor: '#0060b4',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -83,21 +88,27 @@ const styles = StyleSheet.create({
     color: '#FFF'
   },
   countMeInButton: {
-    height: 50,
-    width: 150,
     backgroundColor: '#FFF',
+    height: 50,
+    width: '40%',
     borderRadius: 25,
-    paddingTop: 5,
-    marginTop: 40,
-    marginBottom: 15
+    margin: 15,
+    backgroundColor: '#28BFBD',
+    borderWidth: 6,
+    borderColor: '#dee500',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   signedUpMessage: {
     fontSize: 20,
-    color: 'yellow'
+    color: '#dee500'
   },
   equipmentList: {
     fontSize: 20,
     marginVertical: 5,
     color: '#FFF'
+  },
+  buttonText: {
+    fontSize: 18
   }
 });
