@@ -119,7 +119,6 @@ export default function Dashboard({ navigation }) {
   }, [])
 
   const setFilter = (value) => {
-    console.log('inside setFilter func', value)
     return setFilterValue(value)
   }
 
@@ -137,7 +136,6 @@ export default function Dashboard({ navigation }) {
     <View>
       <HeaderNav navigation={navigation}/>
       <Map navigation={navigation} events={filterEvents(filterValue)}/>
-      <Text>Filter events:</Text>
       {/* <FilterByDate /> */}
       <FilterByActivity events={filterEvents(filterValue)} setFilter={setFilter}/>
       <ShortEventCardContainer navigation={navigation} events={filterEvents(filterValue)}/>
