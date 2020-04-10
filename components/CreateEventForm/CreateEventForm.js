@@ -80,20 +80,22 @@ export default function CreateEventForm(props) {
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Activity:</Text>
           <ModalDropdown
+            style={styles.modalDropdown}
             renderButtonText={nameOfActivity => setNameOfActivity(nameOfActivity)}
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
-            defaultValue='>> select <<'
+            defaultValue='select'
             options={['Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball']}
           />
         </View>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Skill Level:</Text>
           <ModalDropdown
+            style={styles.modalDropdown}
             renderButtonText={skillLevel => setSkillLevel(skillLevel)}
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
-            defaultValue='>> select <<'
+            defaultValue='select'
             options={['just for fun', 'beginner', 'intermediate', 'advanced']}
           />
         </View>
@@ -103,20 +105,22 @@ export default function CreateEventForm(props) {
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Start Time:</Text>
           <ModalDropdown
+            style={styles.modalDropdown}
             renderButtonText={startTime => setStartTime(startTime)}
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
-            defaultValue='>> select <<'
+            defaultValue='select'
             options={allTimes}
           />
         </View>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Duration:</Text>
           <ModalDropdown
+            style={styles.modalDropdown}
             renderButtonText={duration => setDuration(duration)}
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
-            defaultValue='>> select <<'
+            defaultValue='select'
             options={['00:30', '00:45', '01:00', '01:15', '01:30', '01:45', '02:00', '02:15', '02:30', '02:45', '03:00', '03:15', '03:30', '03:45', '04:00', '04:15', '04:30', '04:45', '05:00', '05:15', '05:30', '05:45', '06:00']}
           />
         </View>
@@ -126,20 +130,22 @@ export default function CreateEventForm(props) {
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Total Players:</Text>
           <ModalDropdown
+            style={styles.modalDropdown}
             renderButtonText={playersRequired => setPlayersRequired(playersRequired)}
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
-            defaultValue='>> select <<'
+            defaultValue='select'
             options={['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']}
           />
         </View>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Attending:</Text>
           <ModalDropdown
+            style={styles.modalDropdown}
             renderButtonText={currentlyAttending => setCurrentlyAttending(currentlyAttending)}
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
-            defaultValue='>> select <<'
+            defaultValue='select'
             options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']}
           />
         </View>
@@ -164,7 +170,7 @@ export default function CreateEventForm(props) {
           onChangeText={notes => setNotes(notes)}
           value={notes}
         />
-        <View style={styles.createEventButton}><Button onPress={validateInputs} title='create event!'/></View>
+        <View style={styles.createEventButton}><Button onPress={validateInputs} title='CREATE EVENT'/></View>
       </View>
 
     </View>
@@ -179,7 +185,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#28BFBD',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingBottom: 30
   },
   inputContainer: {
     alignItems: 'center'
@@ -207,7 +214,8 @@ const styles = StyleSheet.create({
   },
   timeContainer: {
     flexDirection: 'row',
-    marginTop: 10
+    marginTop: 10,
+    height: 80
   },
   dropdownContainer: {
     alignItems: 'center',
@@ -216,7 +224,7 @@ const styles = StyleSheet.create({
   },
   dropdownText: {
     fontSize: 20,
-    backgroundColor: '#fff'
+    color: '#c4c4c6'
   },
   dropdownTextStyle: {
     fontSize: 20,
@@ -228,6 +236,15 @@ const styles = StyleSheet.create({
     height: 50,
     width: '50%',
     borderRadius: 25,
-    paddingTop: 5
+    paddingTop: 7
+  },
+  modalDropdown: {
+    borderRadius: 10,
+    backgroundColor: '#FFF',
+    borderRadius: 25,
+    height: 40,
+    width: 120,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
