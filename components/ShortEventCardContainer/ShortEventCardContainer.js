@@ -3,9 +3,15 @@ import ShortEventCard from '../ShortEventCard/ShortEventCard';
 import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
 
 export default function ShortEventCardContainer({ navigation, events }) {
-  console.log(events)
   if (!events.length) {
-    return <Text>Looks like there's no events planned for today!</Text>
+    return (
+      <View style={styles.noEventsMessageContainer}>
+        <View style={styles.textBox}>
+          <Text style={styles.noEventsMessage}>Bummer!</Text>
+          <Text style={styles.noEventsMessage}>Looks there's no events for that activity planned today.</Text>
+        </View>
+      </View>
+    )
   }
   let eventCards = events.map(event => <ShortEventCard
     activity={event.activity}
@@ -29,5 +35,20 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20
+  },
+  noEventsMessageContainer: {
+    height: '100%',
+    backgroundColor: '#292c33',
+    alignItems: 'center'
+  },
+  textBox: {
+    width: '80%',
+    marginTop: 40
+  },
+  noEventsMessage: {
+    fontSize: 25,
+    color: '#FFF',
+    textAlign: 'center',
+    marginTop: 10
   }
 });
