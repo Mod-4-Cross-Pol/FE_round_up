@@ -8,6 +8,14 @@ export default function FullEventCard({ route }) {
     Alert.alert('Welcome to the Party! 🤙')
   }
 
+  const findDisplayTime = (eventTime) => {
+    let newTime = parseInt(eventTime.toString().substring(0,2));
+    let hours = ((newTime + 11) % 12) + 1;
+    let ampm = newTime > 11 ? 'pm' : 'am';
+    let minutes = eventTime.toString().substring(2);
+    return hours + ':' + minutes + ampm;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{event.activity}</Text>
@@ -19,12 +27,12 @@ export default function FullEventCard({ route }) {
 
       <View style={styles.lineItem}>
         <Text style={styles.label}>START TIME:</Text>
-        <Text style={styles.text}>{event.time}</Text>
+        <Text style={styles.text}>{findDisplayTime(event.start_time)}</Text>
       </View>
 
       <View style={styles.lineItem}>
-        <Text style={styles.label}>END TIME:</Text>
-        <Text style={styles.text}>0000</Text>
+        <Text style={styles.label}>DURATION</Text>
+        <Text style={styles.text}>{event.duration} minutes</Text>
       </View>
 
       <View style={styles.lineItem}>
