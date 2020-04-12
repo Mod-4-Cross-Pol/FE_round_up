@@ -1,18 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { StyleSheet, View, Text, Platform} from 'react-native';
+import { StyleSheet, View, Text, Platform, Button, Alert } from 'react-native';
+import { connect } from 'react-redux';
+import { saveSelectedDate } from '../../actions/actions';
 
-export default function DatePicker() {
+export function DatePicker(props) {
 
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
-  const [show, setShow] = useState(false);
+  const [ date, setDate ] = useState(Date.now());
+  const [ mode, setMode ] = useState('date');
+  const [ show, setShow ] = useState(false);
 
-  const onChange = (event, selectedDate) => {
+  const onChange = async (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
+    await props.saveSelectedDate(selectedDate)
   };
+
+  const printStore = () => {
+    console.log(props.selectedDate);
+  }
 
   return (
     <View style={styles.container}>
@@ -27,6 +34,7 @@ export default function DatePicker() {
         display="calender"
         onChange={onChange}
       />
+      <Button title='log selected date in store' onPress={printStore}/>
     </View>
   );
 }
@@ -52,3 +60,13 @@ const styles = StyleSheet.create({
     height: 500
   }
 });
+
+export const mapStateToProps = (state) => ({
+  selectedDate: state.selectedDate
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+  saveSelectedDate: targetDate => dispatch(saveSelectedDate(targetDate))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DatePicker);
