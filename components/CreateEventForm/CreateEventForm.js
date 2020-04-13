@@ -96,7 +96,7 @@ export default function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['just for fun', 'beginner', 'intermediate', 'advanced']}
+            options={['Just for fun!', 'Beginner', 'Intermediate', 'Advanced']}
           />
         </View>
       </View>

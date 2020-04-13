@@ -11,8 +11,8 @@ export default function Map({ navigation, events}) {
       region={{
         latitude: 39.7306645,
         longitude: -104.988245,
-        latitudeDelta: 0.07,
-        longitudeDelta: 0.07
+        latitudeDelta: 0.1,
+        longitudeDelta: 0.1
       }}
       >
       {events.map(event => {
