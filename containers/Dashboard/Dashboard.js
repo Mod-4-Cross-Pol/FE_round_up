@@ -10,6 +10,7 @@ export default function Dashboard({ navigation }) {
 
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
+  const [ dateViewing, setDateViewing ] = useState('')
 
   let mockEvents = [
     {
