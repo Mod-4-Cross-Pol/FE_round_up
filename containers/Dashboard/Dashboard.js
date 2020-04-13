@@ -6,6 +6,7 @@ import FilterByActivity from '../../components/FilterByActivity/FilterByActivity
 import ShortEventCardContainer from '../../components/ShortEventCardContainer/ShortEventCardContainer';
 import DisplaySelectedDate from '../../components/DisplaySelectedDate/DisplaySelectedDate';
 import { StyleSheet, View, Text } from 'react-native';
+import { fetchEvents } from '../../apiCalls';
 
 export default function Dashboard({ navigation }) {
 
@@ -81,7 +82,8 @@ export default function Dashboard({ navigation }) {
   ]
 
   useEffect(() => {
-    setEvents(mockEvents)
+    fetchEvents()
+      .then(data => setEvents(data.data))
   }, [])
 
   const setFilter = (value) => {
