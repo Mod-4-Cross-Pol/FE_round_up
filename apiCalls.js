@@ -1,5 +1,4 @@
 export const fetchEvents = (date) => {
-  console.log('DATE TO FETCH', date)
   let desiredDate = convertDate(date)
   return fetch(`https://game-on-pro.herokuapp.com/api/v1/events?date=${desiredDate}`)
     .then(response => {
