@@ -136,7 +136,6 @@ export default function Dashboard({ navigation }) {
     <View>
       <HeaderNav navigation={navigation}/>
       <Map navigation={navigation} events={filterEvents(filterValue)}/>
-      {/* <FilterByDate /> */}
       <FilterByActivity events={filterEvents(filterValue)} setFilter={setFilter}/>
       <ShortEventCardContainer navigation={navigation} events={filterEvents(filterValue)}/>
     </View>

@@ -21,21 +21,20 @@ export default function ShortEventCardContainer({ navigation, events }) {
     navigation={navigation}/>)
 
   return (
-    <ScrollView style={styles.scrollView}>
-      {eventCards}
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        {eventCards}
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   scrollView: {
     width: 'auto',
-    height: '100%',
+    height: 300,
     backgroundColor: '#0060b4',
-    paddingTop: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-
+    padding: 20
   },
   noEventsMessageContainer: {
     height: '100%',
