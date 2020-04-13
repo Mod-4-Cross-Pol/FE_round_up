@@ -15,7 +15,7 @@ export default function Map({ navigation, events }) {
       }}
       >
       {events.map(event => {
-        
+
         let eventLat = event.lat_long.split(',')[0];
         let eventLong = event.lat_long.split(',')[1];
         
@@ -24,7 +24,7 @@ export default function Map({ navigation, events }) {
         {{latitude: eventLat,
           longitude: eventLong}}
           title={event.activity}
-          description={event.notes}
+          description={event.description}
         onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
         />
       })}
