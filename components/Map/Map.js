@@ -1,8 +1,8 @@
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function Map({ navigation, events}) {
+export default function Map({ navigation, events }) {
 
     return (
       <MapView

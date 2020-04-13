@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ModalDropdown from 'react-native-modal-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { StyleSheet, View, Button, Text, TextInput, Alert, ScrollView } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert, ScrollView } from 'react-native';
 
 export default function CreateEventForm(props) {
 
@@ -15,7 +15,7 @@ export default function CreateEventForm(props) {
   const [ equipmentRequired, setEquipmentRequired ] = useState('')
   const [ notes, setNotes ] = useState('')
 
-  const [ date, setDate ] = useState(new Date(1598051730000));
+  const [ date, setDate ] = useState(Date.now());
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(false);
 
@@ -170,7 +170,7 @@ export default function CreateEventForm(props) {
           onChangeText={notes => setNotes(notes)}
           value={notes}
         />
-        <View style={styles.createEventButton}><Button onPress={validateInputs} title='CREATE EVENT'/></View>
+        <TouchableOpacity style={styles.createEventButton} onPress={validateInputs} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
       </View>
 
     </View>
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     marginVertical: 5,
-    color: '#FFF',
+    color: '#0060b4',
     fontWeight: 'bold'
   },
   input: {
@@ -210,7 +210,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     textAlign: 'center',
     fontSize: 20,
-    marginTop: 15
+    marginTop: 15,
+    borderWidth: 4,
+    borderColor: '#dee500',
   },
   timeContainer: {
     flexDirection: 'row',
@@ -236,15 +238,25 @@ const styles = StyleSheet.create({
     height: 50,
     width: '50%',
     borderRadius: 25,
-    paddingTop: 7
+    borderWidth: 6,
+    borderColor: '#dee500',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#0060b4'
   },
   modalDropdown: {
     borderRadius: 10,
     backgroundColor: '#FFF',
     borderRadius: 25,
+    borderWidth: 4,
+    borderColor: '#dee500',
     height: 40,
     width: 120,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 18,
+    color: '#FFF'
   }
 });

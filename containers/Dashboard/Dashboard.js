@@ -4,6 +4,7 @@ import Map from '../../components/Map/Map';
 import FilterByDate from '../../components/FilterByDate/FilterByDate';
 import FilterByActivity from '../../components/FilterByActivity/FilterByActivity';
 import ShortEventCardContainer from '../../components/ShortEventCardContainer/ShortEventCardContainer';
+import DisplaySelectedDate from '../../components/DisplaySelectedDate/DisplaySelectedDate';
 import { StyleSheet, View, Text } from 'react-native';
 
 export default function Dashboard({ navigation }) {

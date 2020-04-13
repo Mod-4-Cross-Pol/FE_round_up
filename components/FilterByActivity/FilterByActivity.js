@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { connect } from 'react-redux';
 
-export default function FilterByActivity(props) {
+export function FilterByActivity(props) {
 
   const [ activityFilterValue, setActivityFilterValue ] = useState('')
 
@@ -10,8 +11,10 @@ export default function FilterByActivity(props) {
     //  setActivityFilterValue(value)
     props.setFilter(value)
   }
+
   return (
     <View style={styles.filterContainer}>
+      <Text style={styles.currentDay}>{props.selectedDate}</Text>
       <ModalDropdown
         style={styles.modalDropdown}
         renderButtonText={activityFilterValue => setFilterValue(activityFilterValue)}
@@ -26,8 +29,7 @@ export default function FilterByActivity(props) {
 
 const styles = StyleSheet.create({
   filterContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    alignItems: 'center',
     padding: 5,
     backgroundColor: '#0060b4'
   },
@@ -53,5 +55,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10
-  }
+  },
+  currentDay: {
+    fontSize: 20,
+    color: '#FFF'
+  },
 });
+
+export const mapStateToProps = (state) => ({
+  selectedDate: state.selectedDate
+});
+
+export default connect(mapStateToProps)(FilterByActivity);
