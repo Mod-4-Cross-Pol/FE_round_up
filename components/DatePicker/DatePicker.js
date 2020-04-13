@@ -32,7 +32,6 @@ export function DatePicker(props) {
         display="calender"
         onChange={onChange}
       />
-      <Button title='log selected date in store' onPress={printStore}/>
     </View>
   );
 }

@@ -42,12 +42,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state) => ({
-  selectedDate: state.selectedDate
-});
-
-connect(mapStateToProps)
-
 //   '#292c33'
 //   '#3b4aff'
 //   '#28BFBD'
