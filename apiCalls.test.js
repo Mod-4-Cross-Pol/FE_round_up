@@ -16,7 +16,7 @@
         skill_level: "just for fun!",
         start_time: "01:00PM"
       }]
-
+      
       beforeEach(() => {
         window.fetch = jest.fn().mockImplementation(() => {
           return Promise.resolve({

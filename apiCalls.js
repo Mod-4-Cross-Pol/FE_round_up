@@ -9,6 +9,7 @@ export const fetchEvents = (date) => {
     })
 }
 
+
 export const fetchPOSTnewEvent = (nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel) => {
   const options = {
     method: "POST",
