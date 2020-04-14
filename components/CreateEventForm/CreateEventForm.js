@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ModalDropdown from 'react-native-modal-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert, ScrollView } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
 
 export default function CreateEventForm(props) {
 
@@ -21,10 +21,35 @@ export default function CreateEventForm(props) {
 
   const allTimes = ['6:00AM', '6:30AM', '7:00AM', '7:30AM', '8:00AM', '8:30AM', '9:00AM', '9:30AM', '10:00AM', '10:30AM','11:00AM', '11:30AM', '12:00PM', '12:30PM', '1:00PM', '1:30PM', '2:00PM', '2:30PM', '3:00PM', '3:30PM', '4:00PM', '4:30PM', '5:00PM', '5:30PM', '6:00PM', '6:30PM', '7:00PM', '7:30PM', '8:00PM', '8:30PM', '9:00PM', '9:30PM', '10:00PM' ]
 
-  const validateInputs = () => {
+  const makePOSTrequest = () => {
+    const options = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"}
+    }
+    let formatDate = convertDate(date)
+    fetch(`https://game-on-pro.herokuapp.com/api/v1/events?activity=${nameOfActivity}&current_participant_count=${currentlyAttending}&date=${formatDate}&description=${notes}&duration=${duration}&equipment=${equipmentRequired}&location=${location}&max_participant_count=${playersRequired}&start_time=${startTime}&skill_level=${skillLevel}`, options)
+      .then(response => response.json())
+      .then(() => Alert.alert('Event Was Created! 🤙'))
+      .catch(error => console.log(error))
+  }
+
+  const convertDate = data => {
+    let dateKey = {
+      Jan: '01', Feb: '02', Mar: '03',
+      Apr: '04', May: '05', Jun: '06',
+      Jul: '07', Aug: '08', Sep: '09',
+      Oct: '10', Nov: '11', Dec: '12'
+    }
+  let stringData = data.toString();
+  let array = stringData.split(' ')
+  console.log(array)
+  return `${array[3]}-${dateKey[array[1]]}-${array[2]}`
+}
+
+  const onCreateEventPress = () => {
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
-        Alert.alert('GOOD TO GO! 👍')
+        makePOSTrequest();
       } else {
         Alert.alert('Total Players Must Be Greater Than Players Attending!')
       }
@@ -56,7 +81,7 @@ export default function CreateEventForm(props) {
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
-    setDate(currentDate);
+    setDate(selectedDate);
   };
 
   return (
@@ -161,7 +186,7 @@ export default function CreateEventForm(props) {
         <TextInput
           style={styles.input}
           placeholder='Equipment (comma seperation)'
-          onChangeText={equipmentRequired => setEquipmentRequired(equipmentRequired)}
+          onChangeText={equipmentRequired => setEquipmentRequired(equipmentRequired.toLowerCase())}
           value={equipmentRequired}
         />
         <TextInput
@@ -170,7 +195,7 @@ export default function CreateEventForm(props) {
           onChangeText={notes => setNotes(notes)}
           value={notes}
         />
-        <TouchableOpacity style={styles.createEventButton} onPress={validateInputs} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.createEventButton} onPress={onCreateEventPress} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
       </View>
 
     </View>
