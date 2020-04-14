@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 const Stack = createStackNavigator();
 const store = createStore(rootReducer, composeWithDevTools());
 
+
 export default function App(props) {
   return (
     <Provider store={store}>
