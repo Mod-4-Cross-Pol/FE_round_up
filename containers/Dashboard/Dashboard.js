@@ -40,7 +40,6 @@ export function Dashboard( props ) {
       <ShortEventCardContainer navigation={props.navigation} events={filterEvents(filterValue)}/>
     </View>
   );
-
 }
 
 export const mapStateToProps = (state) => ({
