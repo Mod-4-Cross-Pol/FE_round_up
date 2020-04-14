@@ -8,13 +8,13 @@ export default function FullEventCard({ route }) {
     Alert.alert('Welcome to the Party! 🤙')
   }
 
-  const findDisplayTime = (eventTime) => {
-    let newTime = parseInt(eventTime.toString().substring(0,2));
-    let hours = ((newTime + 11) % 12) + 1;
-    let ampm = newTime > 11 ? 'pm' : 'am';
-    let minutes = eventTime.toString().substring(2);
-    return hours + ':' + minutes + ampm;
-  }
+  // const findDisplayTime = (eventTime) => {
+  //   let newTime = parseInt(eventTime.toString().substring(0,2));
+  //   let hours = ((newTime + 11) % 12) + 1;
+  //   let ampm = newTime > 11 ? 'pm' : 'am';
+  //   let minutes = eventTime.toString().substring(2);
+  //   return hours + ':' + minutes + ampm;
+  // }
 
   return (
     <View style={styles.container}>
@@ -27,22 +27,23 @@ export default function FullEventCard({ route }) {
 
       <View style={styles.lineItem}>
         <Text style={styles.label}>START TIME:</Text>
-        <Text style={styles.text}>{findDisplayTime(event.start_time)}</Text>
+        <Text style={styles.text}>{event.start_time}</Text>
+        {/* <Text style={styles.text}>{findDisplayTime(event.start_time)}</Text> */}
       </View>
 
       <View style={styles.lineItem}>
         <Text style={styles.label}>DURATION</Text>
-        <Text style={styles.text}>{event.duration} minutes</Text>
+        <Text style={styles.text}>{event.duration}</Text>
       </View>
 
       <View style={styles.lineItem}>
         <Text style={styles.label}># ATTENDING:</Text>
-        <Text style={styles.text}>{event.players_going}</Text>
+        <Text style={styles.text}>{event.current_participant_count}</Text>
       </View>
 
       <View style={styles.lineItem}>
         <Text style={styles.label}># REQUIRED:</Text>
-        <Text style={styles.text}>{event.max_players}</Text>
+        <Text style={styles.text}>{event.max_participant_count}</Text>
       </View>
 
       <View style={styles.lineItem}>
@@ -54,8 +55,8 @@ export default function FullEventCard({ route }) {
       <Text style={styles.label}>EQUIPMENT:</Text>
 
         <View>
-          {event.equipment.map(e => {
-            return <Text style={styles.equipmentList}>• {e.name}</Text>
+          {event.equipment.split(',').map(e => {
+            return <Text style={styles.equipmentList}>• {e}</Text>
           })}
         </View>
       </View>

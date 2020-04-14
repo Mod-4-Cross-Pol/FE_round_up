@@ -3,7 +3,6 @@ import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function Map({ navigation, events }) {
-
     return (
       <MapView
       showsUserLocation={true}
@@ -16,12 +15,16 @@ export default function Map({ navigation, events }) {
       }}
       >
       {events.map(event => {
+
+        let eventLat = event.lat_long.split(',')[0];
+        let eventLong = event.lat_long.split(',')[1];
+        
         return <MapView.Marker
         coordinate=
-        {{latitude: event.lat,
-          longitude: event.long}}
+        {{latitude: eventLat,
+          longitude: eventLong}}
           title={event.activity}
-          description={event.notes}
+          description={event.description}
         onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
         />
       })}
