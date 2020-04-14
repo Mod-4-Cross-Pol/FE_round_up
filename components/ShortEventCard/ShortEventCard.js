@@ -3,8 +3,6 @@ import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
 
 export default function ShortEventCard({activity, location, time, event, navigation}) {
 
-  console.log('THIS THE NAVIGATION', navigation)
-  
   return (
     <TouchableOpacity key={Math.random()} style={styles.smallCardContainer}
     onPress={() => {navigation.navigate('FullEventCard', {event: event})}}>

@@ -15,6 +15,7 @@ export default function ShortEventCardContainer({ navigation, events }) {
   }
   let eventCards = events.map(event => <ShortEventCard
     activity={event.activity}
+    key={Math.random()}
     location={event.location}
     time={event.start_time}
     event={event}
