@@ -1,12 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { configure } from 'enzyme';
-import { shallow } from 'enzyme';
+// import { Dashboard } from './Dashboard';
+import renderer from 'react-test-renderer';
 
-describe('_name_of_component', () => {
+describe('Dashboard', () => {
+
+  describe('Renders a Dashboard component', () => {
+
+    // test('renders correctly', () => {
+    //   const wrapper = renderer.create(<Dashboard />).toJSON();
+    //   expect(wrapper).toMatchSnapshot();
+    // });
 
     test('it works', () => {
       expect(true).toBeTruthy();
     });
+
+  });
 
 });

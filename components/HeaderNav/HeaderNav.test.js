@@ -1,12 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { configure } from 'enzyme';
-import { shallow } from 'enzyme';
+// import { HeaderNav } from './HeaderNav';
+import renderer from 'react-test-renderer';
 
-describe('_name_of_component', () => {
+describe('HeaderNav', () => {
+
+  describe('Renders a HeaderNav component', () => {
+
+    // test('renders correctly', () => {
+    //   const wrapper = renderer.create(<HeaderNav />).toJSON();
+    //   expect(wrapper).toMatchSnapshot();
+    // });
 
     test('it works', () => {
       expect(true).toBeTruthy();
     });
+
+  });
 
 });

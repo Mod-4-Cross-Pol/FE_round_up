@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import HeaderNav from '../../components/HeaderNav/HeaderNav';
 import Map from '../../components/Map/Map';
-import FilterByDate from '../../components/FilterByDate/FilterByDate';
 import FilterByActivity from '../../components/FilterByActivity/FilterByActivity';
 import ShortEventCardContainer from '../../components/ShortEventCardContainer/ShortEventCardContainer';
-import DisplaySelectedDate from '../../components/DisplaySelectedDate/DisplaySelectedDate';
 import { StyleSheet, View, Text } from 'react-native';
 import { fetchEvents } from '../../apiCalls';
 import { connect } from 'react-redux';
 
 export function Dashboard( props ) {
 
-  console.log('DASHBOARD NAV', props.navigation)
-
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
   const [ dateViewing, setDateViewing ] = useState('')
-
 
   useEffect(() => {
     fetchEvents(props.selectedDate)

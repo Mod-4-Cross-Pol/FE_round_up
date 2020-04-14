@@ -2,7 +2,7 @@ import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Map({ navigation, events }) {
+export function Map({ navigation, events }) {
     return (
       <MapView
       showsUserLocation={true}
@@ -40,4 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: '#0060b4'
   }
+
 });
+
+export default Map;
