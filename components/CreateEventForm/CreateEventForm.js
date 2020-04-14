@@ -15,7 +15,7 @@ export default function CreateEventForm(props) {
   const [ skillLevel, setSkillLevel ] = useState('')
   const [ equipmentRequired, setEquipmentRequired ] = useState('')
   const [ notes, setNotes ] = useState('')
-  const [ date, setDate ] = useState(new Date(1598051730000));
+  const [ date, setDate ] = useState(new Date(Date.now()));
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(true);
 
@@ -73,7 +73,6 @@ export default function CreateEventForm(props) {
   }
 
   const onChange = (event, selectedDate) => {
-    setIsDisabled(false)
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(selectedDate);
