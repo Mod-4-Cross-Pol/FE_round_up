@@ -21,8 +21,8 @@ export function Map({ navigation, events }) {
 
         return <MapView.Marker
         coordinate=
-        {{latitude: parseInt(eventLat),
-          longitude: parseInt(eventLong)}}
+        {{latitude: eventLat,
+          longitude: eventLong}}
           title={event.activity}
           key={Math.random()}
           description={event.description}

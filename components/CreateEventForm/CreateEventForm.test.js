@@ -8,6 +8,8 @@ describe('CreateEventForm', () => {
 
   describe('Renders a CreateEventForm component', () => {
 
+    // const ScrollViewComponent = jest.genMockFromModule('ScrollView');
+
     // test('renders correctly', () => {
     //   const wrapper = renderer.create(<CreateEventForm />).toJSON();
     //   expect(wrapper).toMatchSnapshot();

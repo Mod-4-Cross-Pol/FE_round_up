@@ -1,21 +1,22 @@
 import React from 'react';
 // import { FilterByActivity } from './FilterByActivity';
 // import ModalDropdown from 'react-native-modal-dropdown';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 
 describe('FilterByActivity', () => {
 
-  describe('Renders a FilterByActivity component', () => {
+  let wrapper;
 
-    // test('renders correctly', () => {
-    //   const wrapper = renderer.create(<FilterByActivity />).toJSON();
-    //   expect(wrapper).toMatchSnapshot();
-    // });
+  // beforeEach(() => {
+  //   wrapper = Enzyme.shallow(<FilterByActivity />);
+  // })
 
-    test('it works', () => {
-      expect(true).toBeTruthy();
-    });
+  // test('renders the component', () => {
+  //   expect(wrapper).toMatchSnapshot();
+  // });
 
+  test('it works', () => {
+    expect(true).toBeTruthy();
   });
 
 });

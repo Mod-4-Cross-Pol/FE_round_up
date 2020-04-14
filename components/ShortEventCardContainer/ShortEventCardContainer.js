@@ -2,8 +2,15 @@ import React from 'react';
 import ShortEventCard from '../ShortEventCard/ShortEventCard';
 import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
 
-export function ShortEventCardContainer({ navigation, events }) {
-  if (!events.length) {
+export function ShortEventCardContainer({ navigation, events, isLoading }) {
+
+  if (isLoading) {
+    return (
+      <View style={styles.noEventsMessageContainer}>
+          <Text style={styles.loadingText}>LOADING...</Text>
+      </View>
+    )
+  } else if (!events.length) {
     return (
       <View style={styles.noEventsMessageContainer}>
         <View style={styles.textBox}>
@@ -13,6 +20,7 @@ export function ShortEventCardContainer({ navigation, events }) {
       </View>
     )
   }
+
   let eventCards = events.map(event => <ShortEventCard
     activity={event.activity}
     key={Math.random()}
@@ -48,6 +56,13 @@ const styles = StyleSheet.create({
   },
   noEventsMessage: {
     fontSize: 25,
+    color: '#FFF',
+    textAlign: 'center',
+    marginTop: 10
+  },
+  loadingText: {
+    fontSize: 35,
+    fontWeight: 'bold',
     color: '#FFF',
     textAlign: 'center',
     marginTop: 10

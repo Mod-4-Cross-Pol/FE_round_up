@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
+import { fetchDELETEevent } from '../../apiCalls';
+import { StyleSheet, View, TouchableOpacity, Text, Alert, Button } from 'react-native';
 
-export function FullEventCard({ route }) {
+export function FullEventCard({ navigation, route }) {
   const { event } = route.params
 
   const onCountMeInButtonPress = () => {
     Alert.alert('Welcome to the Party! 🤙')
   }
 
-  // const findDisplayTime = (eventTime) => {
-  //   let newTime = parseInt(eventTime.toString().substring(0,2));
-  //   let hours = ((newTime + 11) % 12) + 1;
-  //   let ampm = newTime > 11 ? 'pm' : 'am';
-  //   let minutes = eventTime.toString().substring(2);
-  //   return hours + ':' + minutes + ampm;
-  // }
+  const handleDeleteEvent = () => {
+    Alert.alert('The Event Has Been Deleted!')
+    fetchDELETEevent(event.id)
+    navigation.navigate('Dashboard')
+  }
 
   return (
     <View style={styles.container}>
@@ -28,7 +27,6 @@ export function FullEventCard({ route }) {
       <View style={styles.lineItem}>
         <Text style={styles.label}>START TIME:</Text>
         <Text style={styles.text}>{event.start_time}</Text>
-        {/* <Text style={styles.text}>{findDisplayTime(event.start_time)}</Text> */}
       </View>
 
       <View style={styles.lineItem}>
@@ -64,6 +62,7 @@ export function FullEventCard({ route }) {
       <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>
       <Text style={styles.signedUpMessage}>You Are Not Currently</Text>
       <Text style={styles.signedUpMessage}>Signed Up For This Event</Text>
+      <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteEvent}><Text style={styles.deleteButtonText}>DELETE EVENT</Text></TouchableOpacity>
     </View>
   );
 }
@@ -119,6 +118,18 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18
+  },
+  deleteButton: {
+    height: 50,
+    width: '40%',
+    borderRadius: 25,
+    marginTop: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  deleteButtonText: {
+    color: '#FFF',
+    fontSize: 18,
   }
 
 });
