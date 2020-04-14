@@ -36,7 +36,6 @@ export default function CreateEventForm(props) {
     }
   let stringData = data.toString();
   let array = stringData.split(' ')
-  console.log(array)
   return `${array[3]}-${dateKey[array[1]]}-${array[2]}`
 }
 
