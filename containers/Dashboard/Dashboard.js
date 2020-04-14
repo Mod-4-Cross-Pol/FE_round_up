@@ -12,10 +12,13 @@ export function Dashboard( props ) {
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
   const [ dateViewing, setDateViewing ] = useState('')
+  const [ isLoading, setIsLoading ] = useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     fetchEvents(props.selectedDate)
       .then(data => setEvents(data.data))
+      .then(() => setIsLoading(false))
   }, [props.selectedDate])
 
   const setFilter = (value) => {
@@ -37,7 +40,7 @@ export function Dashboard( props ) {
       <HeaderNav navigation={props.navigation}/>
       <Map navigation={props.navigation} events={filterEvents(filterValue)}/>
       <FilterByActivity events={filterEvents(filterValue)} setFilter={setFilter}/>
-      <ShortEventCardContainer navigation={props.navigation} events={filterEvents(filterValue)}/>
+      <ShortEventCardContainer navigation={props.navigation} isLoading={isLoading} events={filterEvents(filterValue)}/>
     </View>
   );
 }

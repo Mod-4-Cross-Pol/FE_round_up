@@ -4,7 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { fetchPOSTnewEvent } from '../../apiCalls';
 import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
 
-export function CreateEventForm(props) {
+export function CreateEventForm({ navigation }) {
 
   const [ nameOfActivity, setNameOfActivity ] = useState('')
   const [ location, setLocation ] = useState('')
@@ -24,6 +24,7 @@ export function CreateEventForm(props) {
   const makePOSTrequest = () => {
     fetchPOSTnewEvent(nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel)
       .then(() => Alert.alert('Event Was Created! 🤙'))
+      .then(() => navigation.navigate('Dashboard'))
       .catch(error => console.log(error))
   }
 

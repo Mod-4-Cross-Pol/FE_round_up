@@ -1,4 +1,4 @@
-export const fetchEvents = (date) => {
+export const fetchEvents = date => {
   let desiredDate = convertDate(date)
   return fetch(`https://game-on-pro.herokuapp.com/api/v1/events?date=${desiredDate}`)
     .then(response => {
@@ -8,7 +8,6 @@ export const fetchEvents = (date) => {
       return response.json()
     })
 }
-
 
 export const fetchPOSTnewEvent = (nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel) => {
   const options = {
@@ -25,7 +24,21 @@ export const fetchPOSTnewEvent = (nameOfActivity, currentlyAttending, date, note
     })
 }
 
-const convertDate = data => {
+export const fetchDELETEevent = id => {
+  const options = {
+    method: "DELETE",
+    headers: {"Content-Type": "application/json"}
+  }
+  return fetch(`https://game-on-pro.herokuapp.com/api/v1/events/${id}`, options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('200 status code not found: fetchPOSTnewEvent throw error')
+      }
+      return response.json()
+    })
+}
+
+export const convertDate = data => {
   let dateKey = {
     Jan: '01', Feb: '02', Mar: '03',
     Apr: '04', May: '05', Jun: '06',
