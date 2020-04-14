@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ModalDropdown from 'react-native-modal-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { fetchPOSTnewEvent } from '../../apiCalls';
 import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
 
 export default function CreateEventForm(props) {
@@ -14,21 +15,14 @@ export default function CreateEventForm(props) {
   const [ skillLevel, setSkillLevel ] = useState('')
   const [ equipmentRequired, setEquipmentRequired ] = useState('')
   const [ notes, setNotes ] = useState('')
-
-  const [ date, setDate ] = useState(Date.now());
+  const [ date, setDate ] = useState(new Date(Date.now()));
   const [ mode, setMode ] = useState('date');
-  const [ show, setShow ] = useState(false);
+  const [ show, setShow ] = useState(true);
 
   const allTimes = ['6:00AM', '6:30AM', '7:00AM', '7:30AM', '8:00AM', '8:30AM', '9:00AM', '9:30AM', '10:00AM', '10:30AM','11:00AM', '11:30AM', '12:00PM', '12:30PM', '1:00PM', '1:30PM', '2:00PM', '2:30PM', '3:00PM', '3:30PM', '4:00PM', '4:30PM', '5:00PM', '5:30PM', '6:00PM', '6:30PM', '7:00PM', '7:30PM', '8:00PM', '8:30PM', '9:00PM', '9:30PM', '10:00PM' ]
 
   const makePOSTrequest = () => {
-    const options = {
-      method: "POST",
-      headers: {"Content-Type": "application/json"}
-    }
-    let formatDate = convertDate(date)
-    fetch(`https://game-on-pro.herokuapp.com/api/v1/events?activity=${nameOfActivity}&current_participant_count=${currentlyAttending}&date=${formatDate}&description=${notes}&duration=${duration}&equipment=${equipmentRequired}&location=${location}&max_participant_count=${playersRequired}&start_time=${startTime}&skill_level=${skillLevel}`, options)
-      .then(response => response.json())
+    fetchPOSTnewEvent(nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel)
       .then(() => Alert.alert('Event Was Created! 🤙'))
       .catch(error => console.log(error))
   }
@@ -49,7 +43,7 @@ export default function CreateEventForm(props) {
   const onCreateEventPress = () => {
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
-        makePOSTrequest();
+        makePOSTrequest()
       } else {
         Alert.alert('Total Players Must Be Greater Than Players Attending!')
       }

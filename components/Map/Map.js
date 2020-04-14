@@ -18,12 +18,13 @@ export default function Map({ navigation, events }) {
 
         let eventLat = event.lat_long.split(',')[0];
         let eventLong = event.lat_long.split(',')[1];
-        
+
         return <MapView.Marker
         coordinate=
-        {{latitude: eventLat,
-          longitude: eventLong}}
+        {{latitude: parseInt(eventLat),
+          longitude: parseInt(eventLong)}}
           title={event.activity}
+          key={Math.random()}
           description={event.description}
         onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
         />
