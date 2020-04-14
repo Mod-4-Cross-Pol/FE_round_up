@@ -2,22 +2,15 @@ import React from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
 
 export default function ShortEventCard({activity, location, time, event, navigation}) {
-  
-  // const findDisplayTime = (eventTime) => {
-  //   let newTime = parseInt(eventTime.toString().substring(0,2));
-  //   let hours = ((newTime + 11) % 12) + 1;
-  //   let ampm = newTime > 11 ? 'pm' : 'am';
-  //   let minutes = eventTime.toString().substring(2);
-  //   return hours + ':' + minutes + ampm;
-  // }
 
+  console.log('THIS THE NAVIGATION', navigation)
+  
   return (
     <TouchableOpacity key={Math.random()} style={styles.smallCardContainer}
     onPress={() => {navigation.navigate('FullEventCard', {event: event})}}>
       <Text style={styles.titleText}>{activity}</Text>
       <Text style={styles.text}>{location}</Text>
-      <Text style={styles.text}>Start time: {event.start_time}</Text>
-      {/* <Text style={styles.text}>Start time: {findDisplayTime(time)}</Text> */}
+      <Text style={styles.text}>Start time: {time}</Text>
     </TouchableOpacity>
   );
 }

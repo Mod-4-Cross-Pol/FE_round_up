@@ -9,7 +9,9 @@ import { StyleSheet, View, Text } from 'react-native';
 import { fetchEvents } from '../../apiCalls';
 import { connect } from 'react-redux';
 
-export function Dashboard( props, { navigation }) {
+export function Dashboard( props ) {
+
+  console.log('DASHBOARD NAV', props.navigation)
 
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
@@ -38,9 +40,9 @@ export function Dashboard( props, { navigation }) {
   return (
     <View>
       <HeaderNav navigation={props.navigation}/>
-      <Map navigation={navigation} events={filterEvents(filterValue)}/>
+      <Map navigation={props.navigation} events={filterEvents(filterValue)}/>
       <FilterByActivity events={filterEvents(filterValue)} setFilter={setFilter}/>
-      <ShortEventCardContainer navigation={navigation} events={filterEvents(filterValue)}/>
+      <ShortEventCardContainer navigation={props.navigation} events={filterEvents(filterValue)}/>
     </View>
   );
 
