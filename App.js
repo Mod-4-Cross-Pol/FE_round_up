@@ -21,7 +21,7 @@ const store = createStore(rootReducer, composeWithDevTools());
 
 export default function App(props) {
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName='LoginView'>
           <Stack.Screen name='Login' component={LoginView} />
