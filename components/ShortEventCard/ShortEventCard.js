@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
 
-export default function ShortEventCard({activity, location, time, event, navigation}) {
+export function ShortEventCard({activity, location, time, event, navigation}) {
 
   return (
     <TouchableOpacity key={Math.random()} style={styles.smallCardContainer}
@@ -35,4 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#000'
   }
+
 });
+
+export default ShortEventCard;

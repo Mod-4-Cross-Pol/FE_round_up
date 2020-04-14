@@ -4,7 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { fetchPOSTnewEvent } from '../../apiCalls';
 import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
 
-export default function CreateEventForm(props) {
+export function CreateEventForm(props) {
 
   const [ nameOfActivity, setNameOfActivity ] = useState('')
   const [ location, setLocation ] = useState('')
@@ -278,4 +278,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#FFF'
   }
+
 });
+
+export default CreateEventForm;

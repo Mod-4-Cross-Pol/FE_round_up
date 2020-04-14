@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
 
-export default function FullEventCard({ route }) {
+export function FullEventCard({ route }) {
   const { event } = route.params
 
   const onCountMeInButtonPress = () => {
@@ -120,4 +120,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18
   }
+
 });
+
+export default FullEventCard;

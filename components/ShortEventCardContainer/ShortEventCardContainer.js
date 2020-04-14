@@ -2,7 +2,7 @@ import React from 'react';
 import ShortEventCard from '../ShortEventCard/ShortEventCard';
 import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
 
-export default function ShortEventCardContainer({ navigation, events }) {
+export function ShortEventCardContainer({ navigation, events }) {
   if (!events.length) {
     return (
       <View style={styles.noEventsMessageContainer}>
@@ -52,4 +52,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10
   }
+
 });
+
+export default ShortEventCardContainer;

@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-export default function LoginView({ navigation }) {
+export function LoginView({ navigation }) {
   return (
     <View style={styles.container}>
        <Image
@@ -48,3 +48,5 @@ const styles = StyleSheet.create({
   },
 
 });
+
+export default LoginView

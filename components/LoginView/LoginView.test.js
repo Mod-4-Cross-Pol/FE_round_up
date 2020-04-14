@@ -1,22 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { LoginView } from './LoginView';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { shallow } from 'enzyme';
-configure({ adapter: new Adapter() });
+import renderer from 'react-test-renderer';
 
 describe('LoginView', () => {
 
-  describe('Renders a LoginView', () => {
+  describe('Renders a LoginView component', () => {
 
-    // it('should match the snapshot', () => {
-    //   const wrapper = shallow(<LoginView />);
-    //   expect(wrapper).toMatchSnapshot();
-    // });
-
-    test('it works', () => {
-      expect(true).toBeTruthy();
+    test('renders correctly', () => {
+      const wrapper = renderer.create(<LoginView />).toJSON();
+      expect(wrapper).toMatchSnapshot();
     });
 
   });
