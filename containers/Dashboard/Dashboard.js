@@ -11,8 +11,6 @@ import { connect } from 'react-redux';
 
 export function Dashboard( props ) {
 
-  console.log('DASHBOARD NAV', props.navigation)
-
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
   const [ dateViewing, setDateViewing ] = useState('')
