@@ -19,6 +19,17 @@ export function FullEventCard(props) {
     }
   }
 
+  const convertDateToPrintMonth = data => {
+    let dateKey = {
+      '01': 'Jan', '02': 'Feb', '03': 'Mar',
+      '04': 'Apr', '05': 'May', '06': 'Jun',
+      '07': 'Jul', '08': 'Aug', '09': 'Sep',
+      '10': 'Oct', '11': 'Nov', '12': 'Dec'
+    }
+  let array = data.split('-')
+  return `${dateKey[array[1]]} ${array[2]} ${array[0]}`
+  }
+
   const handleDeleteEvent = () => {
     Alert.alert('The event has been deleted!')
     fetchDELETEevent(event.id)
@@ -29,7 +40,7 @@ export function FullEventCard(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{event.activity}</Text>
-      <Text style={styles.dateText}>{event.date}</Text>
+      <Text style={styles.dateText}>{convertDateToPrintMonth(event.date)}</Text>
 
       <View style={styles.lineItem}>
         <Text style={styles.label}>LOCATION:</Text>
