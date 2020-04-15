@@ -28,23 +28,16 @@ export function CreateEventForm(props) {
       .then(() => Alert.alert('Event Was Created! 🤙'))
       .then(() => props.updateTrigger())
       .then(() => props.navigation.navigate('Dashboard'))
-      .catch(error => console.log(error))
+      .catch(() => Alert.alert('Sorry, that location was not found. Please update the location and try again.'))
   }
 
-  const convertDate = data => {
-    let dateKey = {
-      Jan: '01', Feb: '02', Mar: '03',
-      Apr: '04', May: '05', Jun: '06',
-      Jul: '07', Aug: '08', Sep: '09',
-      Oct: '10', Nov: '11', Dec: '12'
-    }
-  let stringData = data.toString();
-  let array = stringData.split(' ')
-  console.log(array)
-  return `${array[3]}-${dateKey[array[1]]}-${array[2]}`
-}
-
   const onCreateEventPress = () => {
+    if (date.getTime() < Date.now()) {
+      return Alert.alert("Sorry, but currently we don't allow events to be created on the day of the event or prior to today's date.")
+    }
+    if (equipmentRequired.split(',').length > 5) {
+      return Alert.alert('Please limit your equpment to only 5 items.')
+    }
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
         makePOSTrequest()
@@ -57,9 +50,7 @@ export function CreateEventForm(props) {
   }
 
   const verifyTotalPlayersIsGreaterThanAttending = () => {
-    let playersRequiredNum = parseInt(playersRequired)
-    let currentlyAttendingNum = parseInt(currentlyAttending)
-    if (playersRequiredNum <= currentlyAttending) {
+    if (playersRequired <= currentlyAttending) {
       return false
     } else {
       return true
