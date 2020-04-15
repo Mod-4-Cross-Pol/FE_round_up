@@ -26,9 +26,9 @@ export function Dashboard( props ) {
   }
 
   const filterEvents = (value) => {
-    if (value === '' || value === 'Show all events') {
+    if (value === '' || value === 'All events') {
       return events
-    } else if (value === 'Show custom events') {
+    } else if (value === 'Custom events') {
       let filteredEvents = events.filter(event => {
         return event.activity === "Custom"
       })

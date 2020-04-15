@@ -39,7 +39,8 @@ export function FullEventCard(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>{event.activity}</Text>
+      {event.activity === "Custom" && <Text style={styles.titleText}>{event.description}</Text>}
+      {event.activity !== "Custom" && <Text style={styles.titleText}>{event.activity}</Text>}
       <Text style={styles.dateText}>{convertDateToPrintMonth(event.date)}</Text>
 
       <View style={styles.lineItem}>
