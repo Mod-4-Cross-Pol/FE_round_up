@@ -50,8 +50,6 @@ export function CreateEventForm(props) {
   }
 
   const verifyTotalPlayersIsGreaterThanAttending = () => {
-    let playersRequiredNum = parseInt(playersRequired)
-    let currentlyAttendingNum = parseInt(currentlyAttending)
     if (playersRequired <= currentlyAttending) {
       return false
     } else {
@@ -70,7 +68,6 @@ export function CreateEventForm(props) {
   }
 
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(selectedDate);
   };
