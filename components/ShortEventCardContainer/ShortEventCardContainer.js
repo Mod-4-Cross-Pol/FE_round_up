@@ -7,7 +7,7 @@ export function ShortEventCardContainer({ navigation, events, isLoading }) {
   if (isLoading) {
     return (
       <View style={styles.noEventsMessageContainer}>
-          <Text style={styles.loadingText}>LOADING...</Text>
+          <Text style={styles.loadingText}>loading...</Text>
       </View>
     )
   } else if (!events.length) {
@@ -15,7 +15,7 @@ export function ShortEventCardContainer({ navigation, events, isLoading }) {
       <View style={styles.noEventsMessageContainer}>
         <View style={styles.textBox}>
           <Text style={styles.noEventsMessage}>Bummer!</Text>
-          <Text style={styles.noEventsMessage}>Looks like there are no events for that activity planned today.</Text>
+          <Text style={styles.noEventsMessage}>Looks like there are no events planned today.</Text>
         </View>
       </View>
     )
@@ -58,11 +58,10 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   loadingText: {
-    fontSize: 35,
-    fontWeight: 'bold',
+    fontSize: 40,
     color: '#FFF',
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 40,
   }
 
 });
