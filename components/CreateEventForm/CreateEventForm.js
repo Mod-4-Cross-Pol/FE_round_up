@@ -8,15 +8,15 @@ import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert } from 'reac
 
 export function CreateEventForm(props) {
 
-  const [ nameOfActivity, setNameOfActivity ] = useState('')
-  const [ location, setLocation ] = useState('')
-  const [ startTime, setStartTime ] = useState('')
-  const [ duration, setDuration ] = useState('')
-  const [ playersRequired, setPlayersRequired ] = useState('')
-  const [ currentlyAttending, setCurrentlyAttending ] = useState('')
-  const [ skillLevel, setSkillLevel ] = useState('')
-  const [ equipmentRequired, setEquipmentRequired ] = useState('')
-  const [ notes, setNotes ] = useState('')
+  const [ nameOfActivity, setNameOfActivity ] = useState('');
+  const [ location, setLocation ] = useState('');
+  const [ startTime, setStartTime ] = useState('');
+  const [ duration, setDuration ] = useState('');
+  const [ playersRequired, setPlayersRequired ] = useState('');
+  const [ currentlyAttending, setCurrentlyAttending ] = useState('');
+  const [ skillLevel, setSkillLevel ] = useState('');
+  const [ equipmentRequired, setEquipmentRequired ] = useState('');
+  const [ notes, setNotes ] = useState('');
   const [ date, setDate ] = useState(new Date(Date.now()));
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(true);
@@ -36,7 +36,7 @@ export function CreateEventForm(props) {
       return Alert.alert('Please limit your equipment to 5 items.')
     }
     if (nameOfActivity === "Custom" && !notes) {
-      return Alert.alert("Please enter the name of your custom event in the 'Notes' section above.")
+      return Alert.alert("Please enter the name of your custom event in the 'Notes' section.")
     }
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
@@ -183,10 +183,11 @@ export function CreateEventForm(props) {
         <TextInput
           style={styles.input}
           placeholder='Notes...'
+          maxLength={14}
           onChangeText={notes => setNotes(notes)}
           value={notes}
         />
-        {nameOfActivity === "Custom" && <Text>Please name your custom activity in notes.</Text>}
+        {nameOfActivity === "Custom" && <Text style={styles.customActivityMessage}>*Please name your custom activity in notes*</Text>}
         <TouchableOpacity style={styles.createEventButton} onPress={onCreateEventPress} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
       </View>
 
@@ -275,6 +276,10 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     color: '#FFF'
+  },
+  customActivityMessage: {
+    color: '#FFF',
+    fontSize: 20
   }
 
 });
