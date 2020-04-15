@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import CreateEventForm from '../CreateEventForm/CreateEventForm';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 export function HeaderNav({ navigation }) {
@@ -46,7 +44,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18
   }
-
 });
 
 export default HeaderNav;
