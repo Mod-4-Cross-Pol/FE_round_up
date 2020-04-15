@@ -2,13 +2,21 @@ import * as React from 'react';
 import { fetchDELETEevent } from '../../apiCalls';
 import { connect } from 'react-redux';
 import { updateTrigger } from '../../actions/actions';
+import { fetchPATCHevent } from '../../apiCalls';
 import { StyleSheet, View, TouchableOpacity, Text, Alert, Button } from 'react-native';
 
 export function FullEventCard(props) {
   const { event } = props.route.params
 
   const onCountMeInButtonPress = () => {
-    Alert.alert('Welcome to the Party! 🤙')
+    if (event.current_participant_count === event.max_participant_count) {
+      Alert.alert('Sorry, this event is full.')
+    } else {
+      Alert.alert('Welcome to the Party! 🤙')
+      fetchPATCHevent(event.id)
+      props.updateTrigger()
+      props.navigation.navigate('Dashboard')
+    }
   }
 
   const handleDeleteEvent = () => {
@@ -63,8 +71,8 @@ export function FullEventCard(props) {
       </View>
 
       <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>
-      <Text style={styles.signedUpMessage}>You Are Not Currently</Text>
-      <Text style={styles.signedUpMessage}>Signed Up For This Event</Text>
+      {!event.attending && <Text style={styles.signedUpMessage}>You Are Not Currently</Text>}
+      {!event.attending && <Text style={styles.signedUpMessage}>Signed Up For This Event</Text>}
       <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteEvent}><Text style={styles.deleteButtonText}>DELETE EVENT</Text></TouchableOpacity>
     </View>
   );
