@@ -43,6 +43,8 @@ export function FullEventCard(props) {
       {event.activity !== "Custom" && <Text style={styles.titleText}>{event.activity}</Text>}
       <Text style={styles.dateText}>{convertDateToPrintMonth(event.date)}</Text>
 
+      {event.activity !== "Custom" && <Text style={styles.dateText}>{event.description}</Text>}
+
       <View style={styles.lineItem}>
         <Text style={styles.label}>LOCATION:</Text>
         <Text style={styles.text}>{event.location}</Text>
