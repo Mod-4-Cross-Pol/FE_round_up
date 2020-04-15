@@ -32,9 +32,6 @@ export function CreateEventForm(props) {
   }
 
   const onCreateEventPress = () => {
-    // if (date.getTime() < Date.now()) {
-    //   return Alert.alert("Sorry, but currently we don't allow events to be created on the day of the event or prior to today's date.")
-    // }
     if (equipmentRequired.split(',').length > 5) {
       return Alert.alert('Please limit your equipment to 5 items.')
     }
