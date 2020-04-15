@@ -7,13 +7,10 @@ import FullEventCard from './components/FullEventCard/FullEventCard';
 import CreateEventForm from './components/CreateEventForm/CreateEventForm';
 import DatePicker from './components/DatePicker/DatePicker';
 import Dashboard from './containers/Dashboard/Dashboard'
-import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
-
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './reducers/index';
-import { connect } from 'react-redux';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer, composeWithDevTools());
@@ -33,15 +30,3 @@ export default function App(props) {
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#28BFBD',
-    alignItems: 'center'
-  }
-});
-
-//   '#292c33'
-//   '#3b4aff'
-//   '#28BFBD'
