@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { StyleSheet, View, Text, Platform, Button, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Platform, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { saveSelectedDate } from '../../actions/actions';
 
