@@ -13,8 +13,6 @@ export function Dashboard( props ) {
   const [ filterValue, setFilterValue ] = useState('')
   const [ dateViewing, setDateViewing ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
-
-  console.log(events)
   
   useEffect(() => {
     setIsLoading(true)
