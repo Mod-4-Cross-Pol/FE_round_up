@@ -13,8 +13,6 @@ export function Dashboard( props ) {
   const [ filterValue, setFilterValue ] = useState('')
   const [ dateViewing, setDateViewing ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
-
-  console.log(events)
   
   useEffect(() => {
     setIsLoading(true)
@@ -28,8 +26,13 @@ export function Dashboard( props ) {
   }
 
   const filterEvents = (value) => {
-    if (value === '' || value === 'Show all events') {
+    if (value === '' || value === 'All events') {
       return events
+    } else if (value === 'Custom events') {
+      let filteredEvents = events.filter(event => {
+        return event.activity === "Custom"
+      })
+      return filteredEvents
     }
     let filteredEvents = events.filter(event => {
       return event.activity === value

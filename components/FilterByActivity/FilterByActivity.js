@@ -21,7 +21,7 @@ export function FilterByActivity(props) {
         textStyle={styles.dropdownText}
         dropdownTextStyle={styles.dropdownTextStyle}
         defaultValue='FILTER EVENTS BY ACTIVITY'
-        options={[ 'Show all events', 'Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball', 'Miscellaneous']}
+        options={[ 'All events', 'Custom events', 'Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball']}
       />
     </View>
   );
