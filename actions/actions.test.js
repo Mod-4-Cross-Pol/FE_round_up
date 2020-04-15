@@ -12,4 +12,12 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   });
 
+  test('should have a type TRIGGER_UPDATE', () => {
+    const expectedAction = {
+      type: 'TRIGGER_UPDATE'
+    }
+    const result = actions.updateTrigger()
+    expect(result).toEqual(expectedAction)
+  });
+
 });
