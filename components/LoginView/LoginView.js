@@ -1,8 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-const Stack = createStackNavigator();
+import { StyleSheet, View, Button, TextInput, Image } from 'react-native';
 
 export function LoginView({ navigation }) {
   return (
