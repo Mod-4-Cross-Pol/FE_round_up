@@ -14,7 +14,7 @@ export function Dashboard( props ) {
   const [ dateViewing, setDateViewing ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
 
-  console.log(props.updateTrigger);
+  console.log(events);
 
   useEffect(() => {
     setIsLoading(true)
