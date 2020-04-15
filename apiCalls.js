@@ -46,7 +46,7 @@ export const fetchPATCHevent = id => {
   return fetch(`https://game-on-pro.herokuapp.com/api/v1/events/${id}`, options)
     .then(response => {
       if (!response.ok) {
-        throw Error('There was an error making your delete request')
+        throw Error('200 status code not found: fetchPATCHevent throw error')
       }
       return response.json()
     })
