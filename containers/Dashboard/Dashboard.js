@@ -3,7 +3,7 @@ import HeaderNav from '../../components/HeaderNav/HeaderNav';
 import Map from '../../components/Map/Map';
 import FilterByActivity from '../../components/FilterByActivity/FilterByActivity';
 import ShortEventCardContainer from '../../components/ShortEventCardContainer/ShortEventCardContainer';
-import { StyleSheet, View, Text } from 'react-native';
+import { View } from 'react-native';
 import { fetchEvents } from '../../apiCalls';
 import { connect } from 'react-redux';
 
@@ -11,7 +11,6 @@ export function Dashboard( props ) {
 
   const [ events, setEvents ] = useState([])
   const [ filterValue, setFilterValue ] = useState('')
-  const [ dateViewing, setDateViewing ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
 
   useEffect(() => {
