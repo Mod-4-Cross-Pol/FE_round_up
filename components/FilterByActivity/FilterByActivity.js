@@ -8,7 +8,6 @@ export function FilterByActivity(props) {
   const [ activityFilterValue, setActivityFilterValue ] = useState('')
 
   const setFilterValue = (value) => {
-    //  setActivityFilterValue(value)
     props.setFilter(value)
   }
 
@@ -20,7 +19,7 @@ export function FilterByActivity(props) {
         renderButtonText={activityFilterValue => setFilterValue(activityFilterValue)}
         textStyle={styles.dropdownText}
         dropdownTextStyle={styles.dropdownTextStyle}
-        defaultValue='FILTER EVENTS BY ACTIVITY'
+        defaultValue='FILTER EVENTS'
         options={[ 'All events', 'Custom events', 'Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball']}
       />
     </View>
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
     borderColor: '#dee500',
     borderRadius: 23,
     height: 46,
-    width: '85%',
+    width: '60%',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10
