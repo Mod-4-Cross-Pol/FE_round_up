@@ -28,7 +28,7 @@ export function CreateEventForm(props) {
       .then(() => Alert.alert('Event Was Created! 🤙'))
       .then(() => props.updateTrigger())
       .then(() => props.navigation.navigate('Dashboard'))
-      .catch(error => console.log(error))
+      .catch(() => Alert.alert('Sorry, that location was not found. Please update the location and try again.'))
   }
 
   const convertDate = data => {
@@ -45,6 +45,9 @@ export function CreateEventForm(props) {
 }
 
   const onCreateEventPress = () => {
+    if (equipmentRequired.split(',').length > 5) {
+      return Alert.alert('Please limit your equpment to only 5 items.')
+    }
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
         makePOSTrequest()

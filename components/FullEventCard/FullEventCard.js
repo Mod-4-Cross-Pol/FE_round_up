@@ -65,7 +65,7 @@ export function FullEventCard(props) {
 
         <View>
           {event.equipment.split(',').map(e => {
-            return <Text style={styles.equipmentList}>• {e}</Text>
+            return <Text style={styles.equipmentList} key={event.id}>• {e}</Text>
           })}
         </View>
       </View>
