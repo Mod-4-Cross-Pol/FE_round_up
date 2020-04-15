@@ -2,7 +2,7 @@ import { selectedDate } from './selectedDateReducer';
 
 describe('selectedDate', () => {
 
-  test('it works', () => {
+  test('verfy testing file works', () => {
     expect(true).toBeTruthy();
   });
 
