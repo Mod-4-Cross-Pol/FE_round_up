@@ -38,6 +38,20 @@ export const fetchDELETEevent = id => {
     })
 }
 
+export const fetchPATCHevent = id => {
+  const options = {
+    method: "PATCH",
+    headers: {"Content-Type": "application/json"}
+  }
+  return fetch(`https://game-on-pro.herokuapp.com/api/v1/events/${id}`, options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('There was an error making your delete request')
+      }
+      return response.json()
+    })
+}
+
 export const convertDate = data => {
   let dateKey = {
     Jan: '01', Feb: '02', Mar: '03',
