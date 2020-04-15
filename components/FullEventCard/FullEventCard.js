@@ -20,7 +20,7 @@ export function FullEventCard(props) {
   }
 
   const handleDeleteEvent = () => {
-    Alert.alert('The Event Has Been Deleted!')
+    Alert.alert('The event has been deleted!')
     fetchDELETEevent(event.id)
     props.updateTrigger()
     props.navigation.navigate('Dashboard')
@@ -29,6 +29,7 @@ export function FullEventCard(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{event.activity}</Text>
+      <Text style={styles.dateText}>{event.date}</Text>
 
       <View style={styles.lineItem}>
         <Text style={styles.label}>LOCATION:</Text>
@@ -41,17 +42,17 @@ export function FullEventCard(props) {
       </View>
 
       <View style={styles.lineItem}>
-        <Text style={styles.label}>DURATION</Text>
+        <Text style={styles.label}>DURATION:</Text>
         <Text style={styles.text}>{event.duration}</Text>
       </View>
 
       <View style={styles.lineItem}>
-        <Text style={styles.label}># ATTENDING:</Text>
+        <Text style={styles.label}>ATTENDING:</Text>
         <Text style={styles.text}>{event.current_participant_count}</Text>
       </View>
 
       <View style={styles.lineItem}>
-        <Text style={styles.label}># REQUIRED:</Text>
+        <Text style={styles.label}>MAX PLAYERS:</Text>
         <Text style={styles.text}>{event.max_participant_count}</Text>
       </View>
 
@@ -65,15 +66,14 @@ export function FullEventCard(props) {
 
         <View>
           {event.equipment.split(',').map(e => {
-            return <Text style={styles.equipmentList} key={event.id}>• {e}</Text>
+            return <Text style={styles.equipmentList} key={Math.random()}>• {e}</Text>
           })}
         </View>
       </View>
 
       {!event.attending && <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>}
-      {!event.attending && <Text style={styles.signedUpMessage}>You Are Not Currently</Text>}
-      {!event.attending && <Text style={styles.signedUpMessage}>Signed Up For This Event</Text>}
-      {event.attending && <Text style={styles.signedUpMessage}>You Are Currently Signed Up For This Event</Text>}
+      {event.attending && <Text style={styles.NotSignedUpMessageTop}>You Are Signed Up </Text>}
+      {event.attending && <Text style={styles.NotSignedUpMessageBottom}>For This Event!</Text>}
       <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteEvent}><Text style={styles.deleteButtonText}>DELETE EVENT</Text></TouchableOpacity>
     </View>
   );
@@ -95,12 +95,17 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 40,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 10,
     color: '#FFF'
   },
   label: {
     fontSize: 20,
     paddingTop: 13
+  },
+  dateText: {
+    fontSize: 22,
+    color: '#FFF',
+    marginBottom: 10,
   },
   text: {
     fontSize: 27,
@@ -142,6 +147,15 @@ const styles = StyleSheet.create({
   deleteButtonText: {
     color: '#FFF',
     fontSize: 18,
+  },
+  NotSignedUpMessageTop: {
+    fontSize: 20,
+    color: '#dee500',
+    marginTop: 40
+  },
+  NotSignedUpMessageBottom: {
+    fontSize: 20,
+    color: '#dee500'
   }
 
 });

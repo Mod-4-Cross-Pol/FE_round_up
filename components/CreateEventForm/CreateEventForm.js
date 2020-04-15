@@ -32,24 +32,26 @@ export function CreateEventForm(props) {
   }
 
   const onCreateEventPress = () => {
-    if (date.getTime() < Date.now()) {
-      return Alert.alert("Sorry, but currently we don't allow events to be created on the day of the event or prior to today's date.")
-    }
+    // if (date.getTime() < Date.now()) {
+    //   return Alert.alert("Sorry, but currently we don't allow events to be created on the day of the event or prior to today's date.")
+    // }
     if (equipmentRequired.split(',').length > 5) {
-      return Alert.alert('Please limit your equpment to only 5 items.')
+      return Alert.alert('Please limit your equipment to 5 items.')
     }
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
         makePOSTrequest()
       } else {
-        Alert.alert('Total Players Must Be Greater Than Players Attending!')
+        Alert.alert('Total players must be greater than players attending!')
       }
     } else {
-      Alert.alert('Please Fill Out All Fields!')
+      Alert.alert('Please fill out all fields!')
     }
   }
 
   const verifyTotalPlayersIsGreaterThanAttending = () => {
+    let playersRequiredNum = parseInt(playersRequired)
+    let currentlyAttendingNum = parseInt(currentlyAttending)
     if (playersRequired <= currentlyAttending) {
       return false
     } else {
@@ -135,7 +137,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['00:30', '00:45', '01:00', '01:15', '01:30', '01:45', '02:00', '02:15', '02:30', '02:45', '03:00', '03:15', '03:30', '03:45', '04:00', '04:15', '04:30', '04:45', '05:00', '05:15', '05:30', '05:45', '06:00']}
+            options={['30 min', '45 min', '1 hr', '1 hr 15 min', '1 hr 30 min', '1 hr 45 min', '2 hr', '2 hr 15 min', '2 hr 30 min', '2 hr 45 min', '3 hr', '3 hr 15 min', '3 hr 30 min', '3 hr 45 min', '4 hr', '4 hr 15 min', '4 hr 30 min', '4 hr 45 min', '5 hr', '5 hr 15 min', '5 hr 30 min', '5 hr 45 min', '6 hr']}
           />
         </View>
       </View>
@@ -240,11 +242,11 @@ const styles = StyleSheet.create({
   },
   dropdownText: {
     fontSize: 20,
-    color: '#c4c4c6'
+    color: '#000'
   },
   dropdownTextStyle: {
     fontSize: 20,
-    width: 150
+    width: 150,
   },
   createEventButton: {
     backgroundColor: '#FFF',
