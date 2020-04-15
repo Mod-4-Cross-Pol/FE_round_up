@@ -36,7 +36,9 @@ export function DatePicker(props) {
         display="calender"
         onChange={onChange}
       />
-      <TouchableOpacity style={styles.navButton} onPress={navigateToDashboard}><Text style={styles.buttonText}>SELECT DATE</Text></TouchableOpacity>
+      <View style={styles.selectDateButtonContainer}>
+        <TouchableOpacity style={styles.selectDateButton} onPress={navigateToDashboard}><Text style={styles.buttonText}>SELECT DATE</Text></TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -59,22 +61,25 @@ const styles = StyleSheet.create({
   },
   picker: {
     marginTop: -100,
-    height: 500
+    height: 450
   },
-  navButton: {
+  selectDateButton: {
     backgroundColor: '#FFF',
-    height: 50,
-    width: '40%',
-    borderRadius: 25,
-    margin: 10,
-    backgroundColor: '#28BFBD',
+    height: 52,
+    width: '45%',
+    borderRadius: 26,
     borderWidth: 6,
     borderColor: '#dee500',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: '#0060b4'
   },
   buttonText: {
-    fontSize: 18
+    fontSize: 18,
+    color: '#FFF'
+  },
+  selectDateButtonContainer: {
+    alignItems: 'center'
   }
 });
 
