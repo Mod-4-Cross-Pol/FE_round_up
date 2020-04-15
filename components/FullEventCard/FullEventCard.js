@@ -3,7 +3,7 @@ import { fetchDELETEevent } from '../../apiCalls';
 import { connect } from 'react-redux';
 import { updateTrigger } from '../../actions/actions';
 import { fetchPATCHevent } from '../../apiCalls';
-import { StyleSheet, View, TouchableOpacity, Text, Alert, Button } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
 
 export function FullEventCard(props) {
   const { event } = props.route.params
