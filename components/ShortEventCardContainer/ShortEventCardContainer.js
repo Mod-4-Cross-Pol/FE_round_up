@@ -1,6 +1,6 @@
 import React from 'react';
 import ShortEventCard from '../ShortEventCard/ShortEventCard';
-import { StyleSheet, View, Image, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 export function ShortEventCardContainer({ navigation, events, isLoading }) {
 
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 40,
   }
-
 });
 
 export default ShortEventCardContainer;

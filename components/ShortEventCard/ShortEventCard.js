@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 export function ShortEventCard({ event, navigation }) {
 
