@@ -1,6 +1,6 @@
 import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View } from 'react-native';
+import MapView from 'react-native-maps';
+import { StyleSheet } from 'react-native';
 
 export function Map({ navigation, events }) {
     return (
@@ -24,9 +24,9 @@ export function Map({ navigation, events }) {
         {{latitude: eventLat,
           longitude: eventLong}}
           title={event.activity}
-          key={Math.random()}
+          key={event.id}
           description={event.description}
-        onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
+          onPress={() => {navigation.navigate('FullEventCard', {event: event})}}
         />
       })}
       </MapView>
