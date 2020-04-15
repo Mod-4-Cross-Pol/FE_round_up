@@ -14,12 +14,14 @@ export function Dashboard( props ) {
   const [ dateViewing, setDateViewing ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
 
+  console.log(props.updateTrigger);
+
   useEffect(() => {
     setIsLoading(true)
     fetchEvents(props.selectedDate)
       .then(data => setEvents(data.data))
       .then(() => setIsLoading(false))
-  }, [props.selectedDate])
+  }, [props.selectedDate, props.updateTrigger])
 
   const setFilter = (value) => {
     return setFilterValue(value)
@@ -46,7 +48,8 @@ export function Dashboard( props ) {
 }
 
 export const mapStateToProps = (state) => ({
-  selectedDate: state.selectedDate
+  selectedDate: state.selectedDate,
+  updateTrigger: state.updateTrigger
 });
 
 export default connect(mapStateToProps)(Dashboard);

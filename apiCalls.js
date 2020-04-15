@@ -32,7 +32,7 @@ export const fetchDELETEevent = id => {
   return fetch(`https://game-on-pro.herokuapp.com/api/v1/events/${id}`, options)
     .then(response => {
       if (!response.ok) {
-        throw Error('200 status code not found: fetchPOSTnewEvent throw error')
+        throw Error('There was an error making your delete request')
       }
       return response.json()
     })

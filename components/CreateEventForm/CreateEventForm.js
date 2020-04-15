@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import ModalDropdown from 'react-native-modal-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { fetchPOSTnewEvent } from '../../apiCalls';
+import { connect } from 'react-redux';
+import { updateTrigger } from '../../actions/actions';
 import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
 
-export function CreateEventForm({ navigation }) {
+export function CreateEventForm(props) {
 
   const [ nameOfActivity, setNameOfActivity ] = useState('')
   const [ location, setLocation ] = useState('')
@@ -24,7 +26,8 @@ export function CreateEventForm({ navigation }) {
   const makePOSTrequest = () => {
     fetchPOSTnewEvent(nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel)
       .then(() => Alert.alert('Event Was Created! 🤙'))
-      .then(() => navigation.navigate('Dashboard'))
+      .then(() => props.updateTrigger())
+      .then(() => props.navigation.navigate('Dashboard'))
       .catch(error => console.log(error))
   }
 
@@ -282,4 +285,8 @@ const styles = StyleSheet.create({
 
 });
 
-export default CreateEventForm;
+export const mapDispatchToProps = (dispatch) => ({
+  updateTrigger: () => dispatch(updateTrigger())
+})
+
+export default connect(null, mapDispatchToProps)(CreateEventForm);

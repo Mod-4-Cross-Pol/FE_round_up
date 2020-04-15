@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { fetchDELETEevent } from '../../apiCalls';
+import { connect } from 'react-redux';
+import { updateTrigger } from '../../actions/actions';
 import { StyleSheet, View, TouchableOpacity, Text, Alert, Button } from 'react-native';
 
-export function FullEventCard({ navigation, route }) {
-  const { event } = route.params
+export function FullEventCard(props) {
+  const { event } = props.route.params
 
   const onCountMeInButtonPress = () => {
     Alert.alert('Welcome to the Party! 🤙')
@@ -12,7 +14,8 @@ export function FullEventCard({ navigation, route }) {
   const handleDeleteEvent = () => {
     Alert.alert('The Event Has Been Deleted!')
     fetchDELETEevent(event.id)
-    navigation.navigate('Dashboard')
+    props.updateTrigger()
+    props.navigation.navigate('Dashboard')
   }
 
   return (
@@ -134,4 +137,8 @@ const styles = StyleSheet.create({
 
 });
 
-export default FullEventCard;
+export const mapDispatchToProps = (dispatch) => ({
+  updateTrigger: () => dispatch(updateTrigger())
+})
+
+export default connect(null, mapDispatchToProps)(FullEventCard);

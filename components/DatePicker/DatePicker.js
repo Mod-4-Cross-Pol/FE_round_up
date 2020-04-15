@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { StyleSheet, View, Text, Platform, Button, Alert } from 'react-native';
+import { StyleSheet, View, Text, Platform, Button, Alert, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { saveSelectedDate } from '../../actions/actions';
 
 export function DatePicker(props) {
 
-  const [ date, setDate ] = useState(Date.now());
+  const [ date, setDate ] = useState(new Date(Date.now()));
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(false);
 
-  const onChange = async (event, selectedDate) => {
+  const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
-    let displayDate = selectedDate.toString()
+  };
+
+  const navigateToDashboard = async () => {
+    let displayDate = date.toString()
     displayDate = displayDate.split(' ').splice(0,4).join(' ')
     await props.saveSelectedDate(displayDate)
-  };
+    props.navigation.navigate('Dashboard')
+  }
 
   return (
     <View style={styles.container}>
@@ -32,6 +36,7 @@ export function DatePicker(props) {
         display="calender"
         onChange={onChange}
       />
+      <TouchableOpacity style={styles.navButton} onPress={navigateToDashboard}><Text style={styles.buttonText}>SELECT DATE</Text></TouchableOpacity>
     </View>
   );
 }
@@ -55,6 +60,21 @@ const styles = StyleSheet.create({
   picker: {
     marginTop: -100,
     height: 500
+  },
+  navButton: {
+    backgroundColor: '#FFF',
+    height: 50,
+    width: '40%',
+    borderRadius: 25,
+    margin: 10,
+    backgroundColor: '#28BFBD',
+    borderWidth: 6,
+    borderColor: '#dee500',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 18
   }
 });
 
