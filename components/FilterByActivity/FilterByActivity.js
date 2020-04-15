@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { connect } from 'react-redux';
 
 export function FilterByActivity(props) {
-
-  const [ activityFilterValue, setActivityFilterValue ] = useState('')
 
   const setFilterValue = (value) => {
     props.setFilter(value)
