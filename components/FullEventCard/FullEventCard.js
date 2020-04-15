@@ -9,14 +9,10 @@ export function FullEventCard(props) {
   const { event } = props.route.params
 
   const onCountMeInButtonPress = () => {
-    if (event.current_participant_count === event.max_participant_count) {
-      Alert.alert('Sorry, this event is full.')
-    } else {
-      Alert.alert('Welcome to the Party! 🤙')
-      fetchPATCHevent(event.id)
-      props.updateTrigger()
-      props.navigation.navigate('Dashboard')
-    }
+    Alert.alert("You're signed up! 🤙")
+    fetchPATCHevent(event.id)
+    props.updateTrigger()
+    props.navigation.navigate('Dashboard')
   }
 
   const convertDateToPrintMonth = data => {
@@ -33,6 +29,13 @@ export function FullEventCard(props) {
   const handleDeleteEvent = () => {
     Alert.alert('The event has been deleted!')
     fetchDELETEevent(event.id)
+    props.updateTrigger()
+    props.navigation.navigate('Dashboard')
+  }
+
+  const onCountMeOutButtonPress = () => {
+    Alert.alert("You are no longer attending the event.")
+    fetchPATCHevent(event.id)
     props.updateTrigger()
     props.navigation.navigate('Dashboard')
   }
@@ -85,9 +88,8 @@ export function FullEventCard(props) {
         </View>
       </View>
 
-      {!event.attending && <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>}
-      {event.attending && <Text style={styles.NotSignedUpMessageTop}>You Are Signed Up </Text>}
-      {event.attending && <Text style={styles.NotSignedUpMessageBottom}>For This Event!</Text>}
+      {!event.attending && <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInOutButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>}
+      {event.attending && <TouchableOpacity onPress={onCountMeOutButtonPress} style={styles.countMeInOutButton}><Text style={styles.buttonText}>CAN'T MAKE IT!</Text></TouchableOpacity>}
       <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteEvent}><Text style={styles.deleteButtonText}>DELETE EVENT</Text></TouchableOpacity>
     </View>
   );
@@ -126,10 +128,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     color: '#FFF'
   },
-  countMeInButton: {
+  countMeInOutButton: {
     backgroundColor: '#FFF',
     height: 50,
-    width: '40%',
+    width: '50%',
     borderRadius: 25,
     margin: 15,
     backgroundColor: '#28BFBD',
@@ -154,7 +156,6 @@ const styles = StyleSheet.create({
     height: 50,
     width: '40%',
     borderRadius: 25,
-    marginTop: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
