@@ -70,9 +70,10 @@ export function FullEventCard(props) {
         </View>
       </View>
 
-      <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>
+      {!event.attending && <TouchableOpacity onPress={onCountMeInButtonPress} style={styles.countMeInButton}><Text style={styles.buttonText}>COUNT ME IN!</Text></TouchableOpacity>}
       {!event.attending && <Text style={styles.signedUpMessage}>You Are Not Currently</Text>}
       {!event.attending && <Text style={styles.signedUpMessage}>Signed Up For This Event</Text>}
+      {event.attending && <Text style={styles.signedUpMessage}>You Are Currently Signed Up For This Event</Text>}
       <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteEvent}><Text style={styles.deleteButtonText}>DELETE EVENT</Text></TouchableOpacity>
     </View>
   );
