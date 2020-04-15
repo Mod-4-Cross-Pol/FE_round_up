@@ -35,6 +35,9 @@ export function CreateEventForm(props) {
     if (equipmentRequired.split(',').length > 5) {
       return Alert.alert('Please limit your equipment to 5 items.')
     }
+    if (nameOfActivity === "Custom" && !notes) {
+      return Alert.alert("Please enter the name of your custom event in the 'Notes' section above.")
+    }
     if (verifyFieldsAreNotEmpty()) {
       if (verifyTotalPlayersIsGreaterThanAttending()) {
         makePOSTrequest()
@@ -98,7 +101,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball']}
+            options={['Baseball', 'Basketball', 'Biking', 'Bocce ball', 'Climbing', 'Croquet', 'Disc golf', 'Fishing', 'Football', 'Hand ball', 'Kickball', 'Outdoor exercising', 'Slacklining', 'Soccer', 'Spike ball', 'Tennis', 'Trail hiking/walking', 'Ultimate frisbee', 'Volleyball', 'Custom']}
           />
         </View>
         <View style={styles.dropdownContainer}>
@@ -183,6 +186,7 @@ export function CreateEventForm(props) {
           onChangeText={notes => setNotes(notes)}
           value={notes}
         />
+        {nameOfActivity === "Custom" && <Text>Please name your custom activity in notes.</Text>}
         <TouchableOpacity style={styles.createEventButton} onPress={onCreateEventPress} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
       </View>
 
