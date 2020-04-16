@@ -37,8 +37,8 @@ This is a unique opportunity that presents some valuable goals:
 ### Front-End Technologies Used
 - React Native
 - React Navigator
+- React Redux
 - TravisCI
-- Redux
 - XCode iPhone Simulator
 - Expo
 - Jest
@@ -47,12 +47,12 @@ This is a unique opportunity that presents some valuable goals:
 - React Native DateTimePicker
 - NPM
 
-### How to run simulator on a Mac
-1. You will need XCode iPhone simulator. If you don't have it, you can download it from [here](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+### How to run simulator on a Mac using NPM
+1. You will need XCode iPhone simulator. If you don't have it, you can download it from [here](https://apps.apple.com/us/app/xcode/id497799835?mt=12). Now install XCode on your machine.
 2. Clone down this repo into a local directory.
-3. `cd` in the project directory and run `npm install`.
+3. `cd` into the project directory and run `npm install`.
 4. Start up XCode iPhone simulator.
-5. Back in your terminal (within the project directory), run `npm start`. This should automatically redirect you to your browser where a new Expo tab will open.
+5. Back in your terminal (within the project directory) run `npm start`. If you do not currently have Expo installed, you will be prompted to install it. Now, you should be automatically redirected you to your browser where a new Expo tab will open.
 6. Navigate back to your terminal and press `i` to run the project in your simulator. Alternatively, you can select the `Run on iOS Simulator` button in left column of the Expo tab in your browser.
 7. The app should now be running and you can interact with the GAME ON! prototype!
 8. If you run into problems, try following along with the directions for setup in this [video](https://www.youtube.com/watch?v=qSRrxpdMpVc&t=3495s). Start video at 00:47:00 for setup tutorial.
