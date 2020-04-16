@@ -50,7 +50,7 @@ export function CreateEventForm(props) {
   }
 
   const verifyTotalPlayersIsGreaterThanAttending = () => {
-    if (playersRequired <= currentlyAttending) {
+    if (parseInt(playersRequired) <= parseInt(currentlyAttending)) {
       return false
     } else {
       return true
