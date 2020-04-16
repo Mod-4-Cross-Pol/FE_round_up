@@ -1,19 +1,26 @@
 import React from 'react';
-// import { HeaderNav } from './HeaderNav';
-import renderer from 'react-test-renderer';
+import { HeaderNav } from './HeaderNav';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('HeaderNav', () => {
 
   describe('Renders a HeaderNav component', () => {
 
-    // test('renders correctly', () => {
-    //   const wrapper = renderer.create(<HeaderNav />).toJSON();
-    //   expect(wrapper).toMatchSnapshot();
-    // });
+  let wrapper;
 
-    test('it works', () => {
-      expect(true).toBeTruthy();
-    });
+  beforeEach(() => {
+    wrapper = Enzyme.shallow(<HeaderNav />);
+  })
+
+  test('renders the component', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('verfy testing file works', () => {
+    expect(true).toBeTruthy();
+  });
 
   });
 

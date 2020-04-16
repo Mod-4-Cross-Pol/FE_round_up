@@ -1,23 +1,26 @@
 import React from 'react';
-// import { CreateEventForm } from './CreateEventForm';
-// import ModalDropdown from 'react-native-modal-dropdown';
-// import DateTimePicker from '@react-native-community/datetimepicker';
-import renderer from 'react-test-renderer';
+import { CreateEventForm } from './CreateEventForm';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('CreateEventForm', () => {
 
   describe('Renders a CreateEventForm component', () => {
 
-    // const ScrollViewComponent = jest.genMockFromModule('ScrollView');
+  let wrapper;
 
-    // test('renders correctly', () => {
-    //   const wrapper = renderer.create(<CreateEventForm />).toJSON();
-    //   expect(wrapper).toMatchSnapshot();
-    // });
+  beforeEach(() => {
+    wrapper = Enzyme.shallow(<CreateEventForm />);
+  })
 
-    test('it works', () => {
-      expect(true).toBeTruthy();
-    });
+  test('renders the component', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('verfy testing file works', () => {
+    expect(true).toBeTruthy();
+  });
 
   });
 
