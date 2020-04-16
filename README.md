@@ -27,6 +27,7 @@ This is a unique opportunity that presents some valuable goals:
 ### Front-End Technologies Used
 - React Native
 - React Navigator
+- TravisCI
 - Redux
 - XCode iPhone Simulator
 - Expo
