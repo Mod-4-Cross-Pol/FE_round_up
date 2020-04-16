@@ -1,5 +1,5 @@
 # GAME ON! ⚽️ 🏀 ⚾️ 🎾 FE Repo
-an iOS app connecting active people with exciting, recreational activities in their communities!
+an iOS app connecting active people with exciting, recreational activities in their community!
 
 ![logo](https://user-images.githubusercontent.com/53405028/79399821-97868a00-7f41-11ea-9f51-c88389a9d84d.png)
 
