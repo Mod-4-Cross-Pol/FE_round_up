@@ -4,6 +4,9 @@ an iOS app connecting active people with exciting, recreational activities in th
 ![logo](https://user-images.githubusercontent.com/53405028/79399821-97868a00-7f41-11ea-9f51-c88389a9d84d.png)
 
 ### Introduction
+Hey all you cool cats and kittens, welcome to Game On! Denver's hottest new platform connecting active people with games and outdoor activities. Users can create, join, and delete events on the event board in real time. Still sitting on the couch? Get up and join your neighbors for an exciting game of spike ball at City Park or a hike at Red Rocks!
+
+### Description
 This was our final "cross-pollination" project at Turing School of Software and Design. Our team of two front end students and two back end students were tasked with developing a complete app from scratch using new technologies. The app allows a user to log in (project is currently a prototype with one universal user) and view a map with pins representing local events near them. The user can search events by date or activity type. A user can also create activities to post to the "activity board" choosing from a list of set activities or creating their own custom activity. The user can choose to "sign up" for an activity or decide to "cancel" if they are unable to attend.
 
 ### Screenshots
@@ -49,7 +52,7 @@ This is a unique opportunity that presents some valuable goals:
 2. Clone down this repo into a local directory.
 3. `cd` in the project directory and run `npm install`.
 4. Start up XCode iPhone simulator.
-5. Back in your terminal (within the project directory), run `npm start`. This should automatically redirect you to your browser where a new Expo tag will open.
+5. Back in your terminal (within the project directory), run `npm start`. This should automatically redirect you to your browser where a new Expo tab will open.
 6. Navigate back to your terminal and press `i` to run the project in your simulator. Alternatively, you can select the `Run on iOS Simulator` button in left column of the Expo tab in your browser.
 7. The app should now be running and you can interact with the GAME ON! prototype!
 8. If you run into problems, try following along with the directions for setup in this [video](https://www.youtube.com/watch?v=qSRrxpdMpVc&t=3495s). Start video at 00:47:00 for setup tutorial.
