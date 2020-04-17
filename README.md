@@ -10,7 +10,7 @@ Hey all you cool cats and kittens, welcome to Game On! Denver's hottest new plat
 This was our final "cross-pollination" project at Turing School of Software and Design. Our team of two front end students and two back end students were tasked with developing a complete app from scratch using new technologies. The app allows a user to log in (project is currently a prototype with one universal user) and view a map with pins representing local events near them. The user can search events by date or activity type. A user can also create activities to post to the "activity board" choosing from a list of set activities or creating their own custom activity. The user can choose to "sign up" for an activity or decide to "cancel" if they are unable to attend.
 
 ### Screenshots
-![screenshot 1](https://user-images.githubusercontent.com/53405028/79489849-2db9bf00-7fd9-11ea-9bdd-5fa4f7cdf41a.png)
+![screenshot 1](https://user-images.githubusercontent.com/53405028/79586880-f9a0d580-808e-11ea-9f5b-ffd7696eb129.png)
 
 ### Directions for Use
 - When loading the app the user is greeted with a login screen asking for username and password. Currently, the app is a prototype and doesn't require a login, you may simply press the `sign in` button.
