@@ -98,12 +98,10 @@ export function CreateEventForm(props) {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.inputContainer}>
         <Text style={styles.titleText}>CREATE  EVENT</Text>
         <Text style={styles.text}>Select Date:</Text>
       </View>
-
       <DateTimePicker
         style={styles.picker}
         testID="dateTimePicker"
@@ -112,7 +110,6 @@ export function CreateEventForm(props) {
         display="calender"
         onChange={onChange}
       />
-
       <View style={styles.timeContainer}>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Activity:</Text>
@@ -137,7 +134,6 @@ export function CreateEventForm(props) {
           />
         </View>
       </View>
-
       <View style={styles.timeContainer}>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Start Time:</Text>
@@ -162,7 +158,6 @@ export function CreateEventForm(props) {
           />
         </View>
       </View>
-
       <View style={styles.timeContainer}>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Total Players:</Text>
@@ -187,7 +182,6 @@ export function CreateEventForm(props) {
           />
         </View>
       </View>
-
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -211,7 +205,6 @@ export function CreateEventForm(props) {
         {nameOfActivity === "Custom" && <Text style={styles.customActivityMessage}>*Please name your custom activity in notes*</Text>}
         <TouchableOpacity style={styles.createEventButton} onPress={onCreateEventPress} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
       </View>
-
     </View>
   );
 }
