@@ -21,8 +21,6 @@ export function CreateEventForm(props) {
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(true);
 
-  const allTimes = ['6:00AM', '6:30AM', '7:00AM', '7:30AM', '8:00AM', '8:30AM', '9:00AM', '9:30AM', '10:00AM', '10:30AM','11:00AM', '11:30AM', '12:00PM', '12:30PM', '1:00PM', '1:30PM', '2:00PM', '2:30PM', '3:00PM', '3:30PM', '4:00PM', '4:30PM', '5:00PM', '5:30PM', '6:00PM', '6:30PM', '7:00PM', '7:30PM', '8:00PM', '8:30PM', '9:00PM', '9:30PM', '10:00PM' ]
-
   const makePOSTrequest = () => {
     fetchPOSTnewEvent(nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel)
       .then(() => Alert.alert('Event Was Created! 🤙'))
@@ -31,11 +29,37 @@ export function CreateEventForm(props) {
       .catch(() => Alert.alert('Sorry, that location was not found. Please update the location and try again.'))
   }
 
+  const buildTimeSlots = () => {
+    let timeSlots = [];
+    for (let i = 6; i < 12; i++){
+      timeSlots.push(`${i}:00AM`, `${i}:30AM`)
+    }
+    timeSlots.push(`12:00PM`, `12:30PM`)
+    for (let j = 1; j <= 10; j++){
+      timeSlots.push(`${j}:00PM`, `${j}:30PM`)
+    }
+    return timeSlots;
+  }
+
+  const buildTimeDurations = () => {
+    let durations = [`30 min`, `45 min`];
+    for (let i = 1; i <= 6; i++){
+      durations.push(`${i} hr`, `${i} hr 15 min`, `${i} hr 30 min`, `${i} hr 45 min`)
+    }
+    return durations;
+  }
+
+  const buildNumbersThrough50 = startingNum => {
+    let nums = []
+    for (let i = startingNum; i <= 50; i++) {nums.push(`${i}`)}
+    return nums;
+  }
+
   const onCreateEventPress = () => {
     if (equipmentRequired.split(',').length > 5) {
       return Alert.alert('Please limit your equipment to 5 items.')
     }
-    if (nameOfActivity === "Custom" && !notes) {
+    if (nameOfActivity === 'Custom' && !notes) {
       return Alert.alert("Please enter the name of your custom event in the 'Notes' section.")
     }
     if (verifyFieldsAreNotEmpty()) {
@@ -74,12 +98,10 @@ export function CreateEventForm(props) {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.inputContainer}>
         <Text style={styles.titleText}>CREATE  EVENT</Text>
         <Text style={styles.text}>Select Date:</Text>
       </View>
-
       <DateTimePicker
         style={styles.picker}
         testID="dateTimePicker"
@@ -88,7 +110,6 @@ export function CreateEventForm(props) {
         display="calender"
         onChange={onChange}
       />
-
       <View style={styles.timeContainer}>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Activity:</Text>
@@ -113,7 +134,6 @@ export function CreateEventForm(props) {
           />
         </View>
       </View>
-
       <View style={styles.timeContainer}>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Start Time:</Text>
@@ -123,7 +143,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={allTimes}
+            options={buildTimeSlots()}
           />
         </View>
         <View style={styles.dropdownContainer}>
@@ -134,11 +154,10 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['30 min', '45 min', '1 hr', '1 hr 15 min', '1 hr 30 min', '1 hr 45 min', '2 hr', '2 hr 15 min', '2 hr 30 min', '2 hr 45 min', '3 hr', '3 hr 15 min', '3 hr 30 min', '3 hr 45 min', '4 hr', '4 hr 15 min', '4 hr 30 min', '4 hr 45 min', '5 hr', '5 hr 15 min', '5 hr 30 min', '5 hr 45 min', '6 hr']}
+            options={buildTimeDurations()}
           />
         </View>
       </View>
-
       <View style={styles.timeContainer}>
         <View style={styles.dropdownContainer}>
           <Text style={styles.text}>Total Players:</Text>
@@ -148,7 +167,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']}
+            options={buildNumbersThrough50(2)}
           />
         </View>
         <View style={styles.dropdownContainer}>
@@ -159,11 +178,10 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']}
+            options={buildNumbersThrough50(1)}
           />
         </View>
       </View>
-
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -187,7 +205,6 @@ export function CreateEventForm(props) {
         {nameOfActivity === "Custom" && <Text style={styles.customActivityMessage}>*Please name your custom activity in notes*</Text>}
         <TouchableOpacity style={styles.createEventButton} onPress={onCreateEventPress} title='CREATE EVENT'><Text style={styles.buttonText}>CREATE EVENT</Text></TouchableOpacity>
       </View>
-
     </View>
   );
 }
@@ -278,7 +295,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 20
   }
-
 });
 
 export const mapDispatchToProps = (dispatch) => ({
