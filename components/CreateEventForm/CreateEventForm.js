@@ -21,8 +21,6 @@ export function CreateEventForm(props) {
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(true);
 
-  const allTimes = buildTimeSlots();
-
   const makePOSTrequest = () => {
     fetchPOSTnewEvent(nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel)
       .then(() => Alert.alert('Event Was Created! 🤙'))
@@ -32,7 +30,7 @@ export function CreateEventForm(props) {
   }
 
   const buildTimeSlots = () => {
-    let timeSlots = []
+    let timeSlots = [];
     for (let i = 6; i < 12; i++){
       timeSlots.push(`${i}:00AM`, `${i}:30AM`)
     }
@@ -43,11 +41,19 @@ export function CreateEventForm(props) {
     return timeSlots;
   }
 
+  const buildTimeDurations = () => {
+    let durations = [`30 min`, `45 min`];
+    for (let i = 1; i <= 6; i++){
+      durations.push(`${i} hr`, `${i} hr 15 min`, `${i} hr 30 min`, `${i} hr 45 min`)
+    }
+    return durations;
+  }
+
   const onCreateEventPress = () => {
     if (equipmentRequired.split(',').length > 5) {
       return Alert.alert('Please limit your equipment to 5 items.')
     }
-    if (nameOfActivity === "Custom" && !notes) {
+    if (nameOfActivity === 'Custom' && !notes) {
       return Alert.alert("Please enter the name of your custom event in the 'Notes' section.")
     }
     if (verifyFieldsAreNotEmpty()) {
@@ -135,7 +141,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={allTimes}
+            options={buildTimeSlots()}
           />
         </View>
         <View style={styles.dropdownContainer}>
@@ -146,7 +152,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['30 min', '45 min', '1 hr', '1 hr 15 min', '1 hr 30 min', '1 hr 45 min', '2 hr', '2 hr 15 min', '2 hr 30 min', '2 hr 45 min', '3 hr', '3 hr 15 min', '3 hr 30 min', '3 hr 45 min', '4 hr', '4 hr 15 min', '4 hr 30 min', '4 hr 45 min', '5 hr', '5 hr 15 min', '5 hr 30 min', '5 hr 45 min', '6 hr']}
+            options={buildTimeDurations()}
           />
         </View>
       </View>
