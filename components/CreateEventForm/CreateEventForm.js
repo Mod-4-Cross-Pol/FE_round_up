@@ -21,7 +21,7 @@ export function CreateEventForm(props) {
   const [ mode, setMode ] = useState('date');
   const [ show, setShow ] = useState(true);
 
-  const allTimes = ['6:00AM', '6:30AM', '7:00AM', '7:30AM', '8:00AM', '8:30AM', '9:00AM', '9:30AM', '10:00AM', '10:30AM','11:00AM', '11:30AM', '12:00PM', '12:30PM', '1:00PM', '1:30PM', '2:00PM', '2:30PM', '3:00PM', '3:30PM', '4:00PM', '4:30PM', '5:00PM', '5:30PM', '6:00PM', '6:30PM', '7:00PM', '7:30PM', '8:00PM', '8:30PM', '9:00PM', '9:30PM', '10:00PM' ]
+  const allTimes = buildTimeSlots();
 
   const makePOSTrequest = () => {
     fetchPOSTnewEvent(nameOfActivity, currentlyAttending, date, notes, duration, equipmentRequired, location, playersRequired, startTime, skillLevel)
@@ -29,6 +29,18 @@ export function CreateEventForm(props) {
       .then(() => props.updateTrigger())
       .then(() => props.navigation.navigate('Dashboard'))
       .catch(() => Alert.alert('Sorry, that location was not found. Please update the location and try again.'))
+  }
+
+  const buildTimeSlots = () => {
+    let timeSlots = []
+    for (let i = 6; i < 12; i++){
+      timeSlots.push(`${i}:00AM`, `${i}:30AM`)
+    }
+    timeSlots.push(`12:00PM`, `12:30PM`)
+    for (let j = 1; j <= 10; j++){
+      timeSlots.push(`${j}:00PM`, `${j}:30PM`)
+    }
+    return timeSlots;
   }
 
   const onCreateEventPress = () => {
