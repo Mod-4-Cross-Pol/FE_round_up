@@ -295,7 +295,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 20
   }
-
 });
 
 export const mapDispatchToProps = (dispatch) => ({
