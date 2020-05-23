@@ -49,7 +49,7 @@ export function CreateEventForm(props) {
     return durations;
   }
 
-  const buildNumbers1to50 = startingNum => {
+  const buildNumbersThrough50 = startingNum => {
     let nums = []
     for (let i = startingNum; i <= 50; i++) {nums.push(`${i}`)}
     return nums;
@@ -172,7 +172,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={buildNumbers1to50(2)}
+            options={buildNumbersThrough50(2)}
           />
         </View>
         <View style={styles.dropdownContainer}>
@@ -183,7 +183,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={buildNumbers1to50(1)}
+            options={buildNumbersThrough50(1)}
           />
         </View>
       </View>
