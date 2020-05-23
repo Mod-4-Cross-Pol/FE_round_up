@@ -49,6 +49,12 @@ export function CreateEventForm(props) {
     return durations;
   }
 
+  const buildNumbers1to50 = startingNum => {
+    let nums = []
+    for (let i = startingNum; i <= 50; i++) {nums.push(`${i}`)}
+    return nums;
+  }
+
   const onCreateEventPress = () => {
     if (equipmentRequired.split(',').length > 5) {
       return Alert.alert('Please limit your equipment to 5 items.')
@@ -166,7 +172,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']}
+            options={buildNumbers1to50(2)}
           />
         </View>
         <View style={styles.dropdownContainer}>
@@ -177,7 +183,7 @@ export function CreateEventForm(props) {
             textStyle={styles.dropdownText}
             dropdownTextStyle={styles.dropdownTextStyle}
             defaultValue='select'
-            options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']}
+            options={buildNumbers1to50(1)}
           />
         </View>
       </View>
